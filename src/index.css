@@ -98,7 +98,7 @@
 }
 
 .h2_text{
-  @apply hover:text-gray-500 font-medium;
+  @apply hover:text-gray-500 text-gray-700;
 }
 
 .url_input {
