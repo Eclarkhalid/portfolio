@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return <>
     <footer className="flex justify-between w-full items-center pt-2 mb-8 md:mb-2">
-      <div className="links flex gap-4 text-xl">
+      <div className="links flex gap-4 text-2xl">
         <Link to={'https://twitter.com/eclarkhalid'} className='text-gray-600 hover:text-gray-900'>
           <FaSquareXTwitter />
         </Link>
