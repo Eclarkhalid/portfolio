@@ -82,7 +82,7 @@
 }
 
 .title_text {
-  @apply  text-lg font-bold leading-[1.15] text-slate-900 sm:text-2xl text-center;
+  @apply  text-lg underline font-bold leading-[1.15] text-slate-900 sm:text-2xl text-center;
 }
 
 .orange_gradient {
