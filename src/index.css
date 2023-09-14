@@ -110,19 +110,17 @@
 }
 
 .link_card {
-  @apply p-3  bg-white border border-gray-200 gap-3 rounded-lg font-inter ;
+  @apply p-3  bg-white border shadow border-gray-200 gap-3 rounded-lg font-inter ;
 }
 
 .link_card_2 {
   @apply p-3  shadow border border-gray-200 gap-3 rounded-lg font-satoshi ;
 }
 
-.link_card_2 h2 {
-  @apply text-teal-500
-}
+
 
 .link_card_2 .avatar{
-  @apply text-teal-500
+  @apply text-teal-500 font-semibold
 }
 
 .copy_btn {
