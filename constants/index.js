@@ -1,6 +1,14 @@
 
 export const projectLinks = [
   {
+    title: "Recipe Rise",
+    heading: "Ultimate sourse for global recipes and culinary inspiration",
+    url: "https://recipe-first-site.vercel.app/",
+    year: 2023,
+    code: "https://github.com/Eclarkhalid/recipe-first-site",
+    avatar: "R.R"
+  },
+  {
     title: "Summ_Arize",
     heading: "Summarize Articles with OpenAI GPT-4",
     url: "https://ericgitau-summarize-ai-app.netlify.app/",
