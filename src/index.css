@@ -117,6 +117,14 @@
   @apply p-3  shadow border border-gray-200 gap-3 rounded-lg font-satoshi ;
 }
 
+.link_draft {
+  @apply p-3   border border-blue-200 gap-3 rounded-lg font-inter ;
+}
+
+.link_draft_2 {
+  @apply p-3   border border-blue-200 gap-3 rounded-lg font-satoshi ;
+}
+
 .link_card .badge{
   @apply bg-green-50 text-green-600;
 }
