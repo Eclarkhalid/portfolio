@@ -1,18 +1,10 @@
 
 export const projectLinks = [
   {
-    title: "Recipe Rise",
-    heading: "Ultimate sourse for global recipes and culinary inspiration",
-    url: "https://recipe-first-site.vercel.app/",
-    year: 'MERN Stack',
-    code: "https://github.com/Eclarkhalid/recipe-first-site",
-    avatar: "R.R"
-  },
-  {
     title: "Summ_Arize",
     heading: "Summarize Articles with OpenAI GPT-4",
     url: "https://ericgitau-summarize-ai-app.netlify.app/",
-    year: 'Full-stack',
+    year: 'Full-stack / API',
     code: "https://github.com/Eclarkhalid/ai-app",
     avatar: "SA"
   },
@@ -20,9 +12,27 @@ export const projectLinks = [
     title: "Movie Quest",
     heading: "Movie Resorce, Discover information like year, cast, and Movie title.",
     url: "https://moviequest-by-eclar-khalid.netlify.app/",
-    year: 'Full-stack',
+    year: 'Full-stack / API',
     code: "https://github.com/Eclarkhalid/movies",
     avatar: "MQ"
+  },
+
+  {
+    title: "Nike Clone",
+    heading: "A landing page for the Nike's Website",
+    url: "https://nike-clone-gules.vercel.app/",
+    year: 'FrontEnd /Landing Page',
+    code: "https://github.com/Eclarkhalid/nike-clone",
+    avatar: "NC"
+  },
+
+  {
+    title: "Recipe Rise",
+    heading: "Ultimate sourse for global recipes and culinary inspiration",
+    url: "https://recipe-first-site.vercel.app/",
+    year: 'MERN Stack',
+    code: "https://github.com/Eclarkhalid/recipe-first-site",
+    avatar: "R.R"
   },
 
   {
