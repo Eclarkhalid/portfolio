@@ -10,7 +10,7 @@ const Tabs = () => {
   return (
     <nav className="p-2">
       <div className="container mx-auto">
-        <ul className="flex items-center justify-center space-x-4 font-inter">
+        <ul className="flex items-center justify-center space-x-4 font-inter text-xl">
           <li className={location.pathname === '/' ? activeClass : inactiveClass}>
             <Link to="/">About</Link>
           </li>

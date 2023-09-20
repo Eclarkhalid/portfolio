@@ -8,9 +8,8 @@ const Projects = () => {
       <h2 className="desc mb-3">Here are the projects I have managed to complete:</h2>
 
       {projectLinks.map((link, index) => (
-        <div key={link.title}  className={`flex flex-col w-full gap-2 ${
-          index % 2 === 0 ? 'link_card' : 'link_card_2'
-        } mb-3`} >
+        <div key={link.title} className={`flex flex-col w-full gap-2 ${index % 2 === 0 ? 'link_card' : 'link_card_2'
+          } mb-3`} >
           <Link to={link.url} className="md:flex justify-between items-center" target="_blank">
             <div className="flex items-center gap-2">
               <div class="flex h-12 w-12 mb-2 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-secondary-400">
@@ -21,7 +20,7 @@ const Projects = () => {
             <h2 className=" font-inter truncate text-sm h2_text">{link.heading}</h2>
           </Link>
           <div className="flex justify-between items-center">
-            <p>&copy;{link.year}</p>
+            <span class="rounded-full badge px-2 py-1 text-xs font-semibold"> {link.year} </span>
             <p >
               <Link to={link.code} className="submit_btn" target="_blank">Code</Link>
             </p>

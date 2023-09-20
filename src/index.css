@@ -78,7 +78,7 @@
 }
 
 .head_text {
-  @apply  text-2xl font-extrabold leading-[1.15] text-black sm:text-2xl text-center;
+  @apply  text-3xl font-extrabold leading-[1.15] text-black sm:text-3xl text-center;
 }
 
 .title_text {
@@ -115,6 +115,14 @@
 
 .link_card_2 {
   @apply p-3  shadow border border-gray-200 gap-3 rounded-lg font-satoshi ;
+}
+
+.link_card .badge{
+  @apply bg-green-50 text-green-600;
+}
+
+.link_card_2 .badge{
+  @apply bg-red-50 text-red-600;
 }
 
 
