@@ -78,7 +78,7 @@
 }
 
 .head_text {
-  @apply  text-3xl font-extrabold leading-[1.15] text-black sm:text-3xl text-center;
+  @apply  text-3xl font-extrabold leading-[1.15] mb-2 text-black sm:text-3xl text-center;
 }
 
 .title_text {
