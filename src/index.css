@@ -78,11 +78,11 @@
 }
 
 .head_text {
-  @apply  text-3xl font-extrabold leading-[1.15] mb-2 text-black sm:text-3xl text-center;
+  @apply  text-3xl font-extrabold leading-[1.15] mb-2 text-black sm:text-3xl text-center ;
 }
 
 .title_text {
-  @apply  text-lg underline font-bold leading-[1.15] text-slate-900 sm:text-2xl text-center;
+  @apply  text-lg underline font-bold leading-[1.15] text-slate-900 sm:text-2xl text-center hover:text-gray-500;
 }
 
 .orange_gradient {
@@ -98,7 +98,7 @@
 }
 
 .h2_text{
-  @apply hover:text-gray-500 text-gray-700;
+  @apply  text-gray-700 hover:text-gray-500;
 }
 
 .url_input {
@@ -106,7 +106,7 @@
 }
 
 .submit_btn {
-  @apply rounded-lg border border-transparent bg-transparent px-5 py-2 text-center text-sm font-medium text-gray-700 shadow-none transition-all hover:bg-gray-100 disabled:bg-transparent disabled:text-gray-400
+  @apply rounded-lg border border-blue-100 bg-transparent px-5 py-2 text-center text-sm font-medium text-gray-700 shadow-none transition-all hover:bg-gray-100 disabled:bg-transparent disabled:text-gray-400
 }
 
 .link_card {

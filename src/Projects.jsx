@@ -7,7 +7,7 @@ import { draftLinks } from "../drafts";
 const Projects = () => {
   return <>
     <div className="mt-12 w-full">
-      <h2 className="desc mb-3">Here are the projects I have managed to complete:</h2>
+      <h2 className="desc mb-3 font-semibold">Here are the projects I have managed to complete:</h2>
 
       {projectLinks.map((link, index) => (
         <div key={link.title} className={`flex flex-col w-full gap-2 ${index % 2 === 0 ? 'link_card' : 'link_card_2'
@@ -32,8 +32,8 @@ const Projects = () => {
 
       <hr className="my-8 h-px border-0 bg-gray-300" />
     </div>
-    <div className="mt-12 w-full">
-      <h2 className="desc mb-3">Drafts: Projects that are still in development.</h2>
+    <div className=" w-full">
+      <h2 className="desc mb-3 font-semibold">Drafts: Projects that are still in development:</h2>
 
       {draftLinks.map((link, index) => (
         <div key={link.title} className={`flex flex-col w-full gap-2 ${index % 2 === 0 ? 'link_draft' : 'link_draft_2'
