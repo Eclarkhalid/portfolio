@@ -122,7 +122,7 @@
 }
 
 .link_draft_2 {
-  @apply p-3   border border-blue-200 gap-3 rounded-lg font-satoshi ;
+  @apply p-3   border border-blue-300 gap-3 rounded-lg font-satoshi ;
 }
 
 .link_card .badge{
