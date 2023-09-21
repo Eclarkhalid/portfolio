@@ -85,6 +85,8 @@ export const Contact = () => {
           <button type="button" class="rounded-lg border border-primary-100 bg-teal-50 px-5 py-2.5 text-center text-sm font-medium text-primary-600 transition-all hover:border-primary-200 hover:bg-primary-200 focus:ring focus:ring-primary-50 disabled:border-primary-50 disabled:bg-primary-50 disabled:text-primary-400">Call Me</button>
         </a>
       </div>
+
+      <hr className="my-1 h-px border-0 bg-gray-300" />
     </div>
   );
 };
