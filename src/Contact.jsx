@@ -77,6 +77,7 @@ export const Contact = () => {
           Send Message
         </button>
       </form>
+      <hr className="my-8 h-px border-0 bg-gray-300" />
     </div>
   );
 };
