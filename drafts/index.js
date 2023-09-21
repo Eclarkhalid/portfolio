@@ -1,6 +1,15 @@
 export const draftLinks = [
 
   {
+    title: "Tuuze",
+    heading: "A Full Stack Next Js Ecommerce Website",
+    url: "https://tuuze.vercel.app/",
+    year: 'Full Stack',
+    code: "https://github.com/Eclarkhalid/Tuuze",
+    avatar: "Tu"
+  },
+
+  {
     title: "Recipe Rise",
     heading: "This app works but have to fix some bugs.",
     url: "https://recipe-first-site.vercel.app/",
