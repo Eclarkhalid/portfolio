@@ -40,7 +40,7 @@ function App() {
       <div className="app">
         <Header />
 
-        <div className="w-full flex justify-between items-center pt-3">
+        <div className="w-full lg:flex md:flex justify-between items-center pt-3">
           <div className="head_text">
             <h1>{pageTitle}</h1>
           </div>

@@ -74,7 +74,7 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-slate-950 py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black;
+  @apply rounded-full border border-black bg-slate-950 py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black inline-flex gap-1.5 items-center;
 }
 
 .head_text {

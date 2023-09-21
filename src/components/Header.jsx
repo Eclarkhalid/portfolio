@@ -1,3 +1,5 @@
+import { BsGithub } from "react-icons/bs";
+
 const Header = () => {
   return <>
     <header className="w-full flex justify-center items-center flex-col font-satoshi">
@@ -9,7 +11,11 @@ const Header = () => {
           eclarKhalid
         </h2>
 
-        <button type='button' onClick={() => window.open('https://github.com/Eclarkhalid')} className='black_btn'>Github</button>
+        <button type='button' onClick={() => window.open('https://github.com/Eclarkhalid')} className='black_btn'>
+          <BsGithub className="text-white" />
+          Github
+
+        </button>
       </nav>
     </header>
   </>;

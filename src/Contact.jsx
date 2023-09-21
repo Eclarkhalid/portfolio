@@ -78,6 +78,13 @@ export const Contact = () => {
         </button>
       </form>
       <hr className="my-8 h-px border-0 bg-gray-300" />
+
+      <div className="flex items-center justify-between">
+        <h2 className="desc mb-3 font-semibold"> Call Me Instead</h2>
+        <a href="tel:+254708118414">
+          <button type="button" class="rounded-lg border border-primary-100 bg-teal-50 px-5 py-2.5 text-center text-sm font-medium text-primary-600 transition-all hover:border-primary-200 hover:bg-primary-200 focus:ring focus:ring-primary-50 disabled:border-primary-50 disabled:bg-primary-50 disabled:text-primary-400">Call Me</button>
+        </a>
+      </div>
     </div>
   );
 };
