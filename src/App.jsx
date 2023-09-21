@@ -5,20 +5,29 @@ import Tabs from "./components/Tabs";
 import About from "./About";
 import Projects from "./Projects";
 import Footer from "./components/Footer";
+import { Contact } from "./Contact";
 
 function App() {
   const location = useLocation();
   let content;
+  let pageTitle;
 
   switch (location.pathname) {
     case "/about":
       content = <About />;
+      pageTitle = "About";
       break;
     case "/projects":
       content = <Projects />;
+      pageTitle = "Projects";
+      break;
+    case "/contact":
+      content = <Contact />;
+      pageTitle = "Contact";
       break;
     default:
       content = <About />;
+      pageTitle = "About";
       break;
   }
 
@@ -33,7 +42,7 @@ function App() {
 
         <div className="w-full flex justify-between items-center pt-3">
           <div className="head_text">
-            <h1>{location.pathname === "/" ? "About" : "Projects"}</h1>
+            <h1>{pageTitle}</h1>
           </div>
           <Tabs />
         </div>

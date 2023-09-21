@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import About from './About.jsx';
 import Projects from './Projects.jsx';
+import { Contact } from './Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/projects",
         element: <Projects />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
       }
     ]
   },

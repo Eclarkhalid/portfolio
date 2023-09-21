@@ -17,6 +17,9 @@ const Tabs = () => {
           <li className={location.pathname === '/projects' ? activeClass : inactiveClass}>
             <Link to="/projects">Projects</Link>
           </li>
+          <li className={location.pathname === '/contact' ? activeClass : inactiveClass}>
+            <Link to="/contact">Contact</Link>
+          </li>
           {/* Add more li elements for other links */}
         </ul>
       </div>
