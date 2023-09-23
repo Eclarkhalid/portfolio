@@ -19,6 +19,14 @@ export const projectLinks = [
     avatar: "SA"
   },
   {
+    title: "Cars Hub",
+    heading: "Find Book or rent a Car --quickly And Easily!",
+    url: "https://cars-hub-pi.vercel.app/",
+    year: 'Full-stack / API',
+    code: "https://github.com/Eclarkhalid/cars-hub",
+    avatar: "CH"
+  },
+  {
     title: "Movie Quest",
     heading: "Movie Resorce, Discover information like year, cast, and Movie title.",
     url: "https://moviequest-by-eclar-khalid.netlify.app/",
