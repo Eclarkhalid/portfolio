@@ -28,7 +28,6 @@ function About() {
         
         <p className="text-lg mb-3 font-medium">
           View the <Link to="/projects" className="text-blue-900 underline">Projects section</Link> to see my work.
-          View the <a href="projects" className="text-blue-900 underline">Projects section</a> to see my work.
         </p>
         
         <hr className="my-8 h-px border-0 bg-gray-300" />
