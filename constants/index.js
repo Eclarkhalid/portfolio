@@ -39,7 +39,7 @@ export const projectLinks = [
   {
     title: "Recipe Rise",
     heading: "Ultimate sourse for global recipes and culinary inspiration",
-    url: "https://recipe-first-site.vercel.app/",
+    url: "https://recipe-rise-final.vercel.app/",
     year: 'MERN Stack',
     code: "https://github.com/Eclarkhalid/recipe-first-site",
     avatar: "R.R"
