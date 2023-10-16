@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from './assets/favicon.svg'
+import banner from './assets/images/banner.png'
 import { projectLinks } from "../constants";
 
 import { draftLinks } from "../drafts";
@@ -7,6 +7,16 @@ import { draftLinks } from "../drafts";
 const Projects = () => {
   return <>
     <div className="mt-12 w-full">
+      <div class="relative mx-auto mb-6 overflow-hidden rounded-lg bg-white shadow">
+        <div>
+          <img src={banner} alt="banner" />
+        </div>
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-black"></div>
+        <div class="absolute inset-x-0 bottom-0 z-20 p-4">
+          <h3 class="text-xl font-medium text-white">Latest Project</h3>
+          <p class="mt-1 text-white text-opacity-80">Recipe Rise - MERN Fullstack</p>
+        </div>
+      </div>
       <h2 className="desc mb-3 font-semibold">Here are the projects I have managed to complete:</h2>
 
       {projectLinks.map((link, index) => (

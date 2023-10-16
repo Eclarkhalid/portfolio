@@ -2,6 +2,15 @@
 export const projectLinks = [
 
   {
+    title: "Recipe Rise",
+    heading: "Ultimate sourse for global recipes and culinary inspiration",
+    url: "https://recipe-rise-final-j5bs.vercel.app/",
+    year: 'MERN Stack',
+    code: "https://github.com/Eclarkhalid/recipe-first-site",
+    avatar: "R.R"
+  },
+
+  {
     title: "Nike's Clone",
     heading: "A landing page for the Nike's Website. Includes a fully responsive page",
     url: "https://nike-clone-gules.vercel.app/",
@@ -35,15 +44,6 @@ export const projectLinks = [
     avatar: "MQ"
   },
 
-
-  {
-    title: "Recipe Rise",
-    heading: "Ultimate sourse for global recipes and culinary inspiration",
-    url: "https://recipe-rise-final-j5bs.vercel.app/",
-    year: 'MERN Stack',
-    code: "https://github.com/Eclarkhalid/recipe-first-site",
-    avatar: "R.R"
-  },
 
   {
     title: "Apneck",

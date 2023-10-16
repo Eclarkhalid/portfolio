@@ -1,4 +1,5 @@
 import { BsGithub } from "react-icons/bs";
+import { TbBrandFiverr } from 'react-icons/tb'
 
 const Header = () => {
   return <>
@@ -11,11 +12,18 @@ const Header = () => {
           eclarKhalid
         </h2>
 
-        <button type='button' onClick={() => window.open('https://github.com/Eclarkhalid')} className='black_btn'>
-          <BsGithub className="text-white" />
-          Github
+        <div className="flex gap-2">
+          <button type='button' onClick={() => window.open(' https://www.fiverr.com/s/PvZdlG')} className='white_btn'>
+            <TbBrandFiverr />
+            Hire Me
 
-        </button>
+          </button>
+          <button type='button' onClick={() => window.open('https://github.com/Eclarkhalid')} className='black_btn'>
+            <BsGithub className="text-white" />
+            Github
+
+          </button>
+        </div>
       </nav>
     </header>
   </>;

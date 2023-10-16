@@ -25,11 +25,12 @@ function About() {
         <p className="text-lg mb-3 font-medium">
           In addition to my development work, I share my knowledge and teach programming on <a href="https://www.youtube.com/@eclarkhalid/videos" target="_blank" rel="noopener noreferrer" className="text-blue-900 underline">YouTube</a>. I'm committed to staying up-to-date with the latest trends in web development and am eager to collaborate on exciting projects. Feel free to reach out if you'd like to work together!
         </p>
-        
+
         <p className="text-lg mb-3 font-medium">
           View the <Link to="/projects" className="text-blue-900 underline">Projects section</Link> to see my work.
         </p>
-        
+
+
         <hr className="my-8 h-px border-0 bg-gray-300" />
       </div>
     </section>
