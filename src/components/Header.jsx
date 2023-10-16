@@ -3,7 +3,7 @@ import { TbBrandFiverr } from 'react-icons/tb'
 
 const Header = () => {
   return <>
-    <header className="w-full flex justify-center items-center flex-col font-satoshi bg-white sticky top-0 w-full">
+    <header className="z-50 flex justify-center items-center flex-col font-satoshi bg-white sticky top-0 w-full">
       <nav className="flex justify-between items-center w-full mb-8 pt-3">
         <h2 className="flex justify-center logo items-center ">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
