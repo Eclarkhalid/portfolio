@@ -24,8 +24,8 @@ const Projects = () => {
           } mb-3`} >
           <Link to={link.url} className="md:flex justify-between items-center" target="_blank">
             <div className="flex items-center gap-2">
-              <div class="flex h-12 w-12 mb-2 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-secondary-400">
-                <span class="text-lg avatar">{link.avatar} </span>
+              <div className=" bg-blue-300">
+                <img src={link.avatar} class="h-20 w-20 rounded-lg object-cover max-sm:mb-3" alt="" />
               </div>
               <h1 className="title_text">{link.title}</h1>
             </div>

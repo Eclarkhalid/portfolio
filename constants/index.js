@@ -1,4 +1,10 @@
-
+import banner from '../src/assets/images/banner.png'
+import banner1 from '../src/assets/images/banner1.png'
+import banner2 from '../src/assets/images/banner2.png'
+import banner3 from '../src/assets/images/banner3.png'
+import banner4 from '../src/assets/images/banner4.png'
+import banner5 from '../src/assets/images/banner5.png'
+import banner6 from '../src/assets/images/banner6.png'
 export const projectLinks = [
 
   {
@@ -7,7 +13,7 @@ export const projectLinks = [
     url: "https://recipe-rise-final-j5bs.vercel.app/",
     year: 'MERN Stack',
     code: "https://github.com/Eclarkhalid/recipe-first-site",
-    avatar: "R.R"
+    avatar: banner
   },
 
   {
@@ -16,7 +22,7 @@ export const projectLinks = [
     url: "https://nike-clone-gules.vercel.app/",
     year: 'FrontEnd /Landing Page',
     code: "https://github.com/Eclarkhalid/nike-clone",
-    avatar: "NC"
+    avatar: banner2
   },
 
   {
@@ -25,7 +31,7 @@ export const projectLinks = [
     url: "https://ericgitau-summarize-ai-app.netlify.app/",
     year: 'Full-stack / API',
     code: "https://github.com/Eclarkhalid/ai-app",
-    avatar: "SA"
+    avatar: banner1
   },
   {
     title: "Cars Hub",
@@ -33,7 +39,7 @@ export const projectLinks = [
     url: "https://cars-hub-pi.vercel.app/",
     year: 'Full-stack / API',
     code: "https://github.com/Eclarkhalid/cars-hub",
-    avatar: "CH"
+    avatar: banner3
   },
   {
     title: "Movie Quest",
@@ -41,7 +47,7 @@ export const projectLinks = [
     url: "https://moviequest-by-eclar-khalid.netlify.app/",
     year: 'Full-stack / API',
     code: "https://github.com/Eclarkhalid/movies",
-    avatar: "MQ"
+    avatar: banner4
   },
 
 
@@ -51,7 +57,7 @@ export const projectLinks = [
     url: "https://a-pneck.vercel.app/",
     year: 'Frontend',
     code: "https://github.com/Eclarkhalid/APneck",
-    avatar: "AP"
+    avatar: banner5
   },
 
   {
@@ -60,7 +66,7 @@ export const projectLinks = [
     url: "https://my-portfolio-project-eight.vercel.app/",
     year: 'Frontend',
     code: "https://github.com/Eclarkhalid/my-portfolio-project",
-    avatar: "PF"
+    avatar: banner6
   },
 
 ]
