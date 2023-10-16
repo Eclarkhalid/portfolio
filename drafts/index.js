@@ -12,7 +12,7 @@ export const draftLinks = [
   {
     title: "Recipe Rise",
     heading: "This app works but have to fix some bugs.",
-    url: "https://recipe-rise-final.vercel.app/",
+    url: "https://recipe-rise-final-j5bs.vercel.app/",
     year: 'MERN Stack',
     code: "https://github.com/Eclarkhalid/recipe-first-site",
     avatar: "R.R"
