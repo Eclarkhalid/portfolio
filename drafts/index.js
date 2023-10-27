@@ -1,20 +1,20 @@
 export const draftLinks = [
 
   {
-    title: "Tuuze",
+    title: "Next Commerce",
     heading: "A Full Stack Next Js Ecommerce Website",
-    url: "https://tuuze.vercel.app/",
+    url: "https://my-shop-eclarkhalid.vercel.app/",
     year: 'Full Stack',
-    code: "https://github.com/Eclarkhalid/Tuuze",
-    avatar: "Tu"
+    code: "https://github.com/Eclarkhalid/my-shop",
+    avatar: "NC"
   },
 
   {
-    title: "Recipe Rise",
-    heading: "This app works but have to fix some bugs.",
-    url: "https://recipe-rise-final-j5bs.vercel.app/",
-    year: 'MERN Stack',
-    code: "https://github.com/Eclarkhalid/recipe-first-site",
+    title: "Chrem",
+    heading: "Chrem is a Sass aplication.",
+    url: "https://chrem.vercel.app/",
+    year: 'Full Stack',
+    code: "https://github.com/Eclarkhalid/chrem",
     avatar: "R.R"
   },
 
