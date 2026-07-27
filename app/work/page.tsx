@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AccentBar, Container, Heading, Paragraph } from "@/components/base";
+import { ArrowUpRight } from "lucide-react";
+import { Container, PageHeader } from "@/components/base";
 import { getCaseStudies } from "@/lib/content";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { pageMetadata } from "@/lib/metadata";
@@ -17,37 +18,33 @@ export default function WorkPage() {
   const caseStudies = getCaseStudies();
 
   return (
-    <Container>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Case Studies", path: "/work" },
-        ])}
-      />
-      <Heading>Selected case studies</Heading>
-      <AccentBar />
-      <Paragraph className="mt-4 max-w-2xl">
-        The problems, constraints, architecture and engineering decisions behind
-        real products, and what came of them.
-      </Paragraph>
+    <Container className="max-w-7xl">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Case Studies", path: "/work" }])} />
+      <PageHeader eyebrow="Selected work" title="Case studies">
+        The problems, constraints, architecture and engineering decisions behind real products, and what came of them.
+      </PageHeader>
 
-      <div className="mt-12 flex flex-col gap-6">
-        {caseStudies.map((c) => (
+      <section className="mt-20 border-t border-neutral-200">
+        {caseStudies.map((study, index) => (
           <Link
-            key={c.slug}
-            href={`/work/${c.slug}`}
-            className="group rounded-xl border border-neutral-200 p-5 hover:shadow-md hover:border-sky-200 transition"
+            key={study.slug}
+            href={`/work/${study.slug}`}
+            className="group grid gap-5 border-b border-neutral-200 py-9 md:grid-cols-[3rem_minmax(0,1fr)_minmax(13rem,0.45fr)_auto] md:items-start md:gap-8"
           >
-            <h2 className="font-semibold text-neutral-800 group-hover:text-sky-700">
-              {c.meta.title}
-            </h2>
-            <p className="mt-2 text-sm text-neutral-600">{c.meta.description}</p>
-            <p className="mt-3 text-xs text-neutral-500">
-              {c.meta.role} · {c.meta.stack.join(" · ")}
-            </p>
+            <span className="text-xs tabular-nums text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
+            <span>
+              <span className="block text-2xl font-semibold tracking-tight text-neutral-900 transition group-hover:text-sky-700">{study.meta.title}</span>
+              <span className="mt-3 block max-w-2xl text-sm leading-6 text-neutral-700">{study.meta.description}</span>
+            </span>
+            <span>
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Role</span>
+              <span className="mt-2 block text-sm leading-6 text-neutral-700">{study.meta.role}</span>
+              <span className="mt-3 block text-xs leading-5 text-neutral-500">{study.meta.stack.join(" · ")}</span>
+            </span>
+            <ArrowUpRight aria-hidden="true" className="h-5 w-5 text-violet-600 transition group-hover:text-sky-700" />
           </Link>
         ))}
-      </div>
+      </section>
     </Container>
   );
 }

@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { AccentBar, Container, Heading, Paragraph } from "@/components/base";
+import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
+import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { getActiveProducts, getPreviousProducts } from "@/lib/content";
 import { JsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
 import { pageMetadata } from "@/lib/metadata";
+import { productVisuals } from "@/lib/product-visuals";
 
 export const dynamic = "error";
 
@@ -19,101 +21,89 @@ export default function ProductsPage() {
   const previous = getPreviousProducts();
 
   return (
-    <Container>
+    <Container className="max-w-7xl">
       <JsonLd
         data={[
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Products", path: "/products" },
           ]),
-          ...active.map((p) =>
+          ...active.map((product) =>
             productJsonLd({
-              name: p.meta.title,
-              description: p.meta.description,
-              url: p.meta.url,
+              name: product.meta.title,
+              description: product.meta.description,
+              url: product.meta.url,
             })
           ),
         ]}
       />
-      <Heading>Products</Heading>
-      <AccentBar />
-      <Paragraph className="mt-4 max-w-2xl">
-        Products I founded and built end to end: product decisions, system
-        architecture, implementation and operation.
-      </Paragraph>
+      <PageHeader eyebrow="Product portfolio" title="Products">
+        Products I founded and built end to end: product decisions, system architecture, implementation and operation.
+      </PageHeader>
 
-      <div className="mt-12 flex flex-col gap-8">
-        {active.map((p, i) => (
-          <article
-            key={p.slug}
-            className={
-              i % 2 === 0
-                ? "rounded-xl border border-neutral-200 border-l-4 border-l-sky-400 p-6 hover:shadow-md transition"
-                : "rounded-xl border border-neutral-200 border-l-4 border-l-violet-400 p-6 hover:shadow-md transition"
-            }
-          >
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-lg font-semibold text-neutral-800">
-                <Link
-                  href={`/products/${p.slug}`}
-                  className="hover:text-sky-700 transition"
-                >
-                  {p.meta.title}
-                </Link>
-              </h2>
-              {p.meta.url && (
-                <a
-                  href={p.meta.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm text-sky-700 hover:underline"
-                >
-                  Visit <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              )}
-            </div>
-            <Paragraph className="mt-2">{p.meta.description}</Paragraph>
-            {p.meta.stack.length > 0 && (
-              <p className="mt-3 text-xs text-neutral-500">
-                {p.meta.stack.join(" · ")}
-              </p>
-            )}
-            <Link
-              href={`/products/${p.slug}`}
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 hover:underline"
+      <section className="mt-20 border-t border-neutral-200">
+        {active.map((product, index) => {
+          const visual = productVisuals[product.slug];
+          return (
+            <article
+              key={product.slug}
+              className="group grid gap-6 border-b border-neutral-200 py-9 md:grid-cols-[3rem_6rem_minmax(0,1fr)_auto] md:items-center md:gap-8"
             >
-              The full story <ArrowRight className="h-4 w-4" />
-            </Link>
-          </article>
-        ))}
-      </div>
+              <span className="text-xs tabular-nums text-neutral-500">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className={`flex h-20 w-20 items-center justify-center rounded-2xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}>
+                {visual ? (
+                  <Image src={visual.mark} alt={visual.markAlt} width={visual.width} height={visual.height} className="object-contain" />
+                ) : (
+                  <span className="text-lg font-semibold text-neutral-600">{product.meta.title.slice(0, 1)}</span>
+                )}
+              </div>
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
+                    <Link href={`/products/${product.slug}`} className="transition group-hover:text-sky-700">
+                      {product.meta.title}
+                    </Link>
+                  </h2>
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-800">
+                    Active
+                  </span>
+                </div>
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700">{product.meta.description}</p>
+                <p className="mt-3 text-xs leading-5 text-neutral-500">{product.meta.stack.join(" · ")}</p>
+              </div>
+              <div className="flex flex-col items-start gap-3 md:items-end">
+                <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 transition hover:text-sky-700">
+                  Product story <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+                {product.meta.url && (
+                  <a href={product.meta.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-medium text-neutral-600 transition hover:text-neutral-900">
+                    Visit product <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </section>
 
       {previous.length > 0 && (
-        <section className="mt-16">
-          <Heading as="h2">Previous products</Heading>
-          <div className="mt-6 flex flex-col gap-6">
-            {previous.map((p) => (
-              <article
-                key={p.slug}
-                className="rounded-xl border border-dashed border-neutral-200 p-6 bg-neutral-50"
-              >
-                <h3 className="font-semibold text-neutral-700">
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="hover:text-sky-700 transition"
-                  >
-                    {p.meta.title}
-                  </Link>
-                  <span className="ml-2 text-xs font-normal text-neutral-500 uppercase tracking-wide">
-                    Sunsetted
-                  </span>
-                </h3>
-                <Paragraph className="mt-2">{p.meta.description}</Paragraph>
-                <Link
-                  href={`/products/${p.slug}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-sky-700 hover:underline"
-                >
-                  What I learned <ArrowRight className="h-4 w-4" />
+        <section className="mt-24">
+          <SectionIndex number="02" title="Previous products" />
+          <div className="mt-5 border-t border-neutral-200">
+            {previous.map((product) => (
+              <article key={product.slug} className="grid gap-5 border-b border-neutral-200 py-7 md:grid-cols-[3rem_minmax(0,1fr)_auto] md:items-center">
+                <span className="text-xs text-neutral-500">01</span>
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="text-xl font-semibold text-neutral-900">{product.meta.title}</h3>
+                    <span className="rounded-full border border-neutral-300 bg-neutral-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-600">Sunsetted</span>
+                  </div>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-700">{product.meta.description}</p>
+                </div>
+                <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-sky-700">
+                  What I learned <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
                 </Link>
               </article>
             ))}

@@ -12,6 +12,7 @@ export const profile = {
   xHandle: "@eclarkhalid",
   location: "",
   avatar: "/profile-image.jpg",
+  sidebarNote: "Build systems that surface truth and earn trust.",
   about: {
     intro:
       "I'm Eclar Khalid, a software engineer, technical leader and product founder. I design, build and lead the development of production software, from early product decisions and system architecture to implementation, deployment and continuous improvement.",

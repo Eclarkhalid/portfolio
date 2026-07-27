@@ -13,7 +13,7 @@ export function Container({
       id="main-content"
       tabIndex={-1}
       className={twMerge(
-        "max-w-4xl w-full mx-auto py-16 md:py-20 px-4 md:px-10",
+        "mx-auto w-full max-w-6xl px-5 py-16 md:px-10 md:py-20 lg:px-14 lg:py-24",
         className
       )}
     >
@@ -32,9 +32,9 @@ export function Heading({
   className?: string;
 }) {
   const styles = {
-    h1: "text-2xl md:text-4xl font-bold text-neutral-800 tracking-tight",
-    h2: "text-xl md:text-2xl font-bold text-neutral-800 tracking-tight",
-    h3: "text-lg md:text-xl font-semibold text-neutral-800",
+    h1: "text-4xl font-semibold tracking-[-0.04em] text-neutral-900 md:text-6xl",
+    h2: "text-2xl font-semibold tracking-[-0.025em] text-neutral-900 md:text-3xl",
+    h3: "text-lg font-semibold tracking-tight text-neutral-900 md:text-xl",
   } as const;
   return <Tag className={twMerge(styles[Tag], className)}>{children}</Tag>;
 }
@@ -47,27 +47,70 @@ export function Paragraph({
   className?: string;
 }) {
   return (
-    <p className={twMerge("text-sm md:text-base text-neutral-600 leading-relaxed", className)}>
+    <p className={twMerge("text-sm leading-relaxed text-neutral-700 md:text-base", className)}>
       {children}
     </p>
   );
 }
 
-/** Subtle gradient accent bar, used under page headings. */
 export function AccentBar({ className = "" }: { className?: string }) {
   return (
     <div
       className={twMerge(
-        "mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-sky-500 to-violet-500",
+        "mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-sky-500 to-violet-500",
         className
       )}
     />
   );
 }
 
+export function PageHeader({
+  eyebrow,
+  title,
+  children,
+  className = "",
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <header className={twMerge("max-w-4xl", className)}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">
+        {eyebrow}
+      </p>
+      <Heading className="mt-6">{title}</Heading>
+      <AccentBar />
+      <div className="mt-6 max-w-3xl text-lg leading-8 text-neutral-700 md:text-xl">
+        {children}
+      </div>
+    </header>
+  );
+}
+
+export function SectionIndex({
+  number,
+  title,
+}: {
+  number: string;
+  title: ReactNode;
+}) {
+  return (
+    <div className="flex items-baseline gap-4">
+      <span className="text-[11px] font-semibold tabular-nums text-sky-700">
+        {number}
+      </span>
+      <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+        {title}
+      </h2>
+    </div>
+  );
+}
+
 export function Highlight({ children }: { children: ReactNode }) {
   return (
-    <span className="bg-neutral-100 px-1 py-0.5 rounded font-medium text-neutral-800">
+    <span className="rounded bg-neutral-100 px-1 py-0.5 font-medium text-neutral-900">
       {children}
     </span>
   );

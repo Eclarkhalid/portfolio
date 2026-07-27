@@ -1,4 +1,4 @@
-import { AccentBar, Container, Heading, Paragraph } from "@/components/base";
+import { Container, PageHeader } from "@/components/base";
 import { experience } from "@/content/experience";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { pageMetadata } from "@/lib/metadata";
@@ -14,45 +14,35 @@ export const metadata = pageMetadata({
 
 export default function ExperiencePage() {
   return (
-    <Container>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "Experience", path: "/experience" },
-        ])}
-      />
-      <Heading>Experience</Heading>
-      <AccentBar />
-      <Paragraph className="mt-4 max-w-2xl">
-        Engineering and technology leadership roles, alongside building products
-        of my own.
-      </Paragraph>
+    <Container className="max-w-7xl">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Experience", path: "/experience" }])} />
+      <PageHeader eyebrow="Career and practice" title="Experience">
+        Engineering and technology leadership roles, alongside building products of my own.
+      </PageHeader>
 
-      <div className="mt-12 flex flex-col gap-10">
-        {experience.map((role) => (
+      <section className="mt-20 border-t border-neutral-200">
+        {experience.map((role, index) => (
           <article
             key={`${role.company}-${role.start}`}
-            className="relative border-l-2 border-neutral-200 pl-6"
+            className="grid gap-6 border-b border-neutral-200 py-10 md:grid-cols-[3rem_12rem_minmax(0,1fr)] md:gap-8"
           >
-            <span className="absolute -left-[5px] top-1.5 h-2 w-2 rounded-full bg-sky-500" />
-            <p className="text-xs font-medium text-sky-700">
-              {role.start} to {role.end ?? "Present"}
-            </p>
-            <h2 className="mt-1 text-lg font-semibold text-neutral-800">
-              {role.title} · {role.company}
-            </h2>
-            <Paragraph className="mt-2">{role.summary}</Paragraph>
-            <ul className="mt-3 flex flex-col gap-1.5">
-              {role.highlights.map((h) => (
-                <li key={h} className="text-sm text-neutral-600 flex gap-2">
-                  <span className="text-sky-500 mt-0.5">•</span>
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
+            <span className="text-xs tabular-nums text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <p className="text-xs font-semibold text-sky-700">{role.start} to {role.end ?? "Present"}</p>
+              <p className="mt-2 text-sm font-semibold text-neutral-900">{role.company}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">{role.title}</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-neutral-700">{role.summary}</p>
+              <ul className="mt-5 grid gap-3 md:grid-cols-2">
+                {role.highlights.map((highlight) => (
+                  <li key={highlight} className="border-l-2 border-violet-200 pl-4 text-sm leading-6 text-neutral-700">{highlight}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
-      </div>
+      </section>
     </Container>
   );
 }

@@ -19,7 +19,7 @@ export function ContactForm() {
   if (state?.ok) {
     return (
       <div
-        className="rounded-xl border border-green-200 bg-green-50 p-6 text-sm text-green-800"
+        className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 text-sm font-medium text-emerald-900"
         role="status"
         aria-live="polite"
       >
@@ -29,12 +29,12 @@ export function ContactForm() {
   }
 
   const inputClasses =
-    "mt-1 w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600";
+    "mt-2 w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-900 shadow-sm transition placeholder:text-neutral-400 focus:border-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600/20";
 
   return (
     <form
       action={formAction}
-      className="flex max-w-xl flex-col gap-4"
+      className="flex max-w-2xl flex-col gap-5"
       aria-busy={pending}
     >
       <input ref={startedAtRef} type="hidden" name="startedAt" />
@@ -49,7 +49,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="name" className="text-sm font-medium text-neutral-700">
+        <label htmlFor="name" className="text-sm font-semibold text-neutral-800">
           Name
         </label>
         <input
@@ -63,7 +63,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="email" className="text-sm font-medium text-neutral-700">
+        <label htmlFor="email" className="text-sm font-semibold text-neutral-800">
           Email
         </label>
         <input
@@ -77,7 +77,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-neutral-700">
+        <label htmlFor="message" className="text-sm font-semibold text-neutral-800">
           Message
         </label>
         <textarea
@@ -95,7 +95,7 @@ export function ContactForm() {
           {state.error}
         </p>
       )}
-      <p className="text-xs leading-relaxed text-neutral-500">
+      <p className="text-xs font-medium leading-relaxed text-neutral-600">
         Your details are used only to respond to this inquiry. Read the{" "}
         <a href="/privacy" className="text-sky-700 hover:underline">
           privacy note
@@ -105,7 +105,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="self-start rounded-full bg-neutral-900 px-6 py-2 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50"
+        className="self-start rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {pending ? "Sending…" : "Send message"}
       </button>

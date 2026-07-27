@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AccentBar, Container, Heading, Paragraph } from "@/components/base";
+import { ArrowUpRight } from "lucide-react";
+import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { TechStack } from "@/components/tech-stack";
 import { profile } from "@/content/profile";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -8,63 +9,44 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const dynamic = "error";
 
-export const metadata = pageMetadata({
-  title: "About",
-  description: profile.tagline,
-  path: "/about",
-});
+export const metadata = pageMetadata({ title: "About", description: profile.tagline, path: "/about" });
 
 export default function AboutPage() {
   return (
-    <Container>
-      <JsonLd
-        data={breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
-        ])}
-      />
-      <div className="flex items-center gap-4">
-        <Image
-          src={profile.avatar}
-          alt={profile.name}
-          width={64}
-          height={64}
-          className="rounded-2xl object-cover aspect-square"
-          priority
-        />
-        <Heading>About</Heading>
-      </div>
-      <AccentBar />
+    <Container className="max-w-7xl">
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
+      <PageHeader eyebrow="About the work" title="Engineer. Leader. Founder.">
+        {profile.about.intro}
+      </PageHeader>
 
-      <div className="mt-8 flex flex-col gap-5 max-w-2xl">
-        <Paragraph className="text-base">{profile.about.intro}</Paragraph>
-        {profile.about.body.map((p) => (
-          <Paragraph key={p.slice(0, 24)} className="text-base">
-            {p}
-          </Paragraph>
-        ))}
-      </div>
-
-      <section className="mt-14">
-        <Heading as="h2">Technologies I work with</Heading>
-        <div className="mt-5">
-          <TechStack items={profile.stack} />
+      <section className="mt-20 grid gap-10 border-t border-neutral-200 py-10 md:grid-cols-[16rem_minmax(0,1fr)] md:gap-16">
+        <div>
+          <Image src={profile.avatar} alt={profile.name} width={256} height={256} className="aspect-square w-full max-w-64 rounded-3xl object-cover" priority />
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600">{profile.name}</p>
+          <p className="mt-1 text-sm text-neutral-700">Software engineer, technical leader and product founder</p>
+        </div>
+        <div className="max-w-3xl space-y-6">
+          {profile.about.body.map((paragraph) => (
+            <p key={paragraph.slice(0, 24)} className="text-lg leading-8 text-neutral-700">{paragraph}</p>
+          ))}
         </div>
       </section>
 
-      <section className="mt-14 rounded-xl bg-neutral-50 border border-neutral-200 p-6 max-w-2xl">
-        <Heading as="h2">Elsewhere</Heading>
-        <Paragraph className="mt-2">
-          I share tutorials and build-in-public work on{" "}
-          <a href={profile.links.youtube} className="text-sky-700 hover:underline" target="_blank" rel="noopener noreferrer">
-            YouTube
-          </a>{" "}
-          and write about engineering on this site.{" "}
-          <Link href="/contact" className="text-sky-700 hover:underline">
-            Get in touch
-          </Link>{" "}
-          if you&apos;d like to work together.
-        </Paragraph>
+      <section className="border-t border-neutral-200 py-10">
+        <SectionIndex number="01" title="Technical range" />
+        <div className="mt-6 max-w-4xl"><TechStack items={profile.stack} /></div>
+      </section>
+
+      <section className="grid gap-8 border-y border-neutral-200 py-10 md:grid-cols-[17rem_minmax(0,1fr)]">
+        <SectionIndex number="02" title="Elsewhere" />
+        <div>
+          <p className="max-w-2xl text-lg leading-8 text-neutral-700">I share tutorials on YouTube and write about the engineering decisions behind production software on this site.</p>
+          <div className="mt-5 flex flex-wrap gap-5">
+            <a href={profile.links.youtube} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-sky-700">YouTube <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></a>
+            <Link href="/writing" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-sky-700">Writing <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
+            <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-sky-700">Work with me <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></Link>
+          </div>
+        </div>
       </section>
     </Container>
   );

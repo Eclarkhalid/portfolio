@@ -1,0 +1,26 @@
+[Unit]
+Description=Eclar Khalid portfolio (Next.js standalone)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=deploy
+Group=www-data
+WorkingDirectory=/var/www/eclarkhalid.com/app/.next/standalone
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3000
+EnvironmentFile=-/var/www/eclarkhalid.com/app/.env.production
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+KillSignal=SIGTERM
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

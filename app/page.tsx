@@ -1,10 +1,31 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { AccentBar, Container, Heading, Paragraph } from "@/components/base";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Container } from "@/components/base";
 import { profile } from "@/content/profile";
 import { getActiveProducts, getArticles, getCaseStudies } from "@/lib/content";
+import { productVisuals } from "@/lib/product-visuals";
 
 export const dynamic = "error";
+
+function ChapterHeading({
+  number,
+  children,
+}: {
+  number: string;
+  children: string;
+}) {
+  return (
+    <div className="flex items-center gap-4 border-b border-neutral-200 pb-4">
+      <span className="text-[11px] font-semibold tabular-nums text-sky-700">
+        {number}
+      </span>
+      <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+        {children}
+      </h2>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const products = getActiveProducts();
@@ -12,90 +33,209 @@ export default function HomePage() {
   const caseStudies = getCaseStudies().slice(0, 2);
 
   return (
-    <Container>
-      <span className="text-4xl">👋</span>
-      <Heading className="mt-4">{profile.name}</Heading>
-      <AccentBar />
-      <Paragraph className="mt-4 max-w-2xl text-base md:text-lg">
-        {profile.tagline}
-      </Paragraph>
-
-      <section className="mt-16">
-        <Heading as="h2">Products</Heading>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {products.map((p, i) => (
-            <Link
-              key={p.slug}
-              href={`/products/${p.slug}`}
-              className={
-                i % 2 === 0
-                  ? "rounded-xl border border-sky-100 bg-gradient-to-br from-sky-50/70 to-white p-5 hover:shadow-md hover:border-sky-200 transition"
-                  : "rounded-xl border border-violet-100 bg-gradient-to-br from-violet-50/70 to-white p-5 hover:shadow-md hover:border-violet-200 transition"
-              }
-            >
-              <h3 className="font-semibold text-neutral-800">{p.meta.title}</h3>
-              <p className="mt-2 text-sm text-neutral-600">{p.meta.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-16">
-        <div className="flex items-center justify-between">
-          <Heading as="h2">Selected case studies</Heading>
-          <Link href="/work" className="text-sm text-sky-700 hover:underline">
-            All case studies
-          </Link>
-        </div>
-        <div className="mt-6 flex flex-col gap-4">
-          {caseStudies.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/work/${c.slug}`}
-              className="rounded-xl border border-neutral-200 p-5 hover:shadow-md hover:border-sky-200 transition"
-            >
-              <h3 className="font-semibold text-neutral-800">{c.meta.title}</h3>
-              <p className="mt-2 text-sm text-neutral-600">{c.meta.description}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-16">
-        <div className="flex items-center justify-between">
-          <Heading as="h2">Writing</Heading>
-          <Link href="/writing" className="text-sm text-sky-700 hover:underline">
-            All articles
-          </Link>
-        </div>
-        <ul className="mt-6 flex flex-col gap-3">
-          {articles.map((a) => (
-            <li key={a.slug}>
-              <Link
-                href={`/writing/${a.slug}`}
-                className="group flex items-center justify-between rounded-lg px-2 py-2 hover:bg-neutral-50"
-              >
-                <span className="text-neutral-700 group-hover:text-neutral-900 text-sm md:text-base">
-                  {a.meta.title}
-                </span>
-                <ArrowRight className="h-4 w-4 text-neutral-500 group-hover:text-sky-700" />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mt-16 rounded-xl bg-gradient-to-br from-sky-50 via-white to-violet-50 border border-sky-100 p-6">
-        <Heading as="h2">Let&apos;s build something</Heading>
-        <Paragraph className="mt-2">
-          I work with teams on consulting, technical leadership and product engineering.
-        </Paragraph>
-        <Link
-          href="/contact"
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+    <Container className="max-w-7xl">
+      <section className="relative isolate overflow-hidden pb-24 pt-2 md:pb-32 md:pt-8">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-12 z-0 hidden h-[38rem] w-[34rem] select-none opacity-60 xl:-right-32 xl:block"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%)",
+          }}
         >
-          Get in touch <ArrowRight className="h-4 w-4" />
-        </Link>
+          <Image
+            src="/hero-wave.png"
+            alt=""
+            fill
+            sizes="34rem"
+            className="object-contain object-right-top"
+            priority
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-28 bg-gradient-to-r from-transparent to-white xl:block"
+        />
+        <div className="relative z-10 max-w-3xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">
+            Portfolio / Selected work
+          </p>
+          <h1 className="mt-8 text-5xl font-semibold tracking-[-0.065em] text-neutral-950 sm:text-7xl md:text-[6.5rem] md:leading-[0.92]">
+            {profile.name}
+          </h1>
+          <div className="mt-8 h-1 w-24 rounded-full bg-gradient-to-r from-sky-500 to-violet-500" />
+          <p className="mt-8 max-w-3xl text-xl leading-relaxed tracking-[-0.015em] text-neutral-600 md:text-2xl md:leading-relaxed">
+            {profile.tagline}
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-sky-800"
+            >
+              Explore selected work{" "}
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50/50 px-5 py-3 text-sm font-medium text-violet-800 transition hover:border-violet-300 hover:bg-violet-50"
+            >
+              Start a conversation
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <ChapterHeading number="01">Selected products</ChapterHeading>
+        <div>
+          {products.map((product, index) => {
+            const visual = productVisuals[product.slug];
+            return (
+              <article
+                key={product.slug}
+                className="group grid gap-5 border-b border-neutral-200 py-8 md:grid-cols-[3rem_5rem_minmax(0,1fr)_auto] md:items-center md:gap-8"
+              >
+                <span className="text-xs tabular-nums text-neutral-400">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div
+                  className={`flex h-20 w-20 items-center justify-center rounded-2xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}
+                >
+                  {visual ? (
+                    <Image
+                      src={visual.mark}
+                      alt={visual.markAlt}
+                      width={visual.width}
+                      height={visual.height}
+                      className="object-contain"
+                    />
+                  ) : (
+                    <span className="text-lg font-semibold text-neutral-500">
+                      {product.meta.title.slice(0, 1)}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold tracking-tight text-neutral-900 md:text-2xl">
+                    {product.meta.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
+                    {product.meta.description}
+                  </p>
+                  <p className="mt-3 text-[11px] leading-5 text-neutral-400">
+                    {product.meta.stack.join(" · ")}
+                  </p>
+                </div>
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-neutral-700 transition group-hover:text-sky-700"
+                >
+                  Product story{" "}
+                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mt-28 md:mt-36">
+        <ChapterHeading number="02">Engineering decisions</ChapterHeading>
+        <div className="grid gap-10 py-10 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-700">
+              From the case studies
+            </p>
+            <p className="mt-5 text-2xl font-medium leading-snug tracking-[-0.025em] text-neutral-900 md:text-3xl">
+              Reliable products begin with clear evidence, bounded decisions and
+              recoverable systems.
+            </p>
+          </div>
+          <div className="divide-y divide-neutral-200 border-y border-neutral-200">
+            {caseStudies.map((study, index) => (
+              <Link
+                key={study.slug}
+                href={`/work/${study.slug}`}
+                className="group grid gap-4 py-6 sm:grid-cols-[2rem_1fr_auto] sm:items-start"
+              >
+                <span className="text-xs tabular-nums text-neutral-400">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="block font-semibold text-neutral-900 transition group-hover:text-sky-700">
+                    {study.meta.title}
+                  </span>
+                  <span className="mt-2 block text-sm leading-6 text-neutral-600">
+                    {study.meta.description}
+                  </span>
+                </span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="h-4 w-4 text-neutral-400 transition group-hover:text-sky-700"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-24 md:mt-32">
+        <ChapterHeading number="03">Writing</ChapterHeading>
+        <div className="divide-y divide-neutral-200">
+          {articles.map((article, index) => (
+            <Link
+              key={article.slug}
+              href={`/writing/${article.slug}`}
+              className="group grid gap-4 py-6 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-center"
+            >
+              <span className="text-xs tabular-nums text-neutral-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>
+                <span className="block text-lg font-medium tracking-tight text-neutral-900 transition group-hover:text-sky-700">
+                  {article.meta.title}
+                </span>
+                <span className="mt-1 block text-sm text-neutral-500">
+                  {article.meta.description}
+                </span>
+              </span>
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 text-neutral-400 transition group-hover:translate-x-1 group-hover:text-sky-700"
+              />
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/writing"
+            className="text-sm font-medium text-sky-700 hover:underline"
+          >
+            Browse all writing
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-28 border-t border-neutral-200 py-12 md:mt-36">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+              Have a complex product to ship?
+            </p>
+            <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.035em] text-neutral-900 md:text-4xl">
+              Bring the product question. I&apos;ll help make the engineering
+              path clear.
+            </h2>
+          </div>
+          <Link
+            href="/contact"
+            className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-neutral-900 transition hover:text-violet-700"
+          >
+            Work with me <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+          </Link>
+        </div>
       </section>
     </Container>
   );

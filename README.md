@@ -77,6 +77,20 @@ The production build also validates all MDX frontmatter and static routes. Perfo
 
 The primary target is Vercel with `eclarkhalid.com` configured as the production domain. Git pushes can produce preview deployments before the production promotion.
 
-For a VPS or container deployment, enable `output: "standalone"` in `next.config.ts`, build the app, and run it behind an HTTPS reverse proxy. Sharp is a direct production dependency for portable image optimization.
+For a VPS deployment, run:
+
+```bash
+npm run build:vps
+node .next/standalone/server.js
+```
+
+`build:vps` enables Next.js standalone output only for that build and copies the public and static assets into the minimal runtime. Run the server behind Nginx or another HTTPS reverse proxy. Sharp is a direct production dependency for portable image optimization.
+
+Deployment resources:
+
+- [`docs/VPS_DEPLOYMENT_GUIDE.md`](docs/VPS_DEPLOYMENT_GUIDE.md): complete Ubuntu, systemd, Nginx, DNS and HTTPS walkthrough
+- [`docs/YOUTUBE_VIDEO_RUNBOOK.md`](docs/YOUTUBE_VIDEO_RUNBOOK.md): filming chapters, demo route and troubleshooting cues
+- [`deploy/systemd/eclarkhalid.service`](deploy/systemd/eclarkhalid.service): systemd process template
+- [`deploy/nginx/eclarkhalid.com.conf`](deploy/nginx/eclarkhalid.com.conf): Nginx reverse proxy template
 
 The retired portfolio repositories are reference material only. This application does not import their runtime architecture or data layer. Permanent redirects in `next.config.ts` preserve useful old links.
