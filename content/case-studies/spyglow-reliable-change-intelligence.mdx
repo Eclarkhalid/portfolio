@@ -1,0 +1,78 @@
+---
+title: "Building reliable change intelligence for SpyGlow"
+description: How I separated capture quality, deterministic comparison and AI interpretation to make competitor monitoring more trustworthy.
+published: 2026-07-27
+role: Founder, product strategy and full-stack engineering
+stack: [Next.js, Node.js, MongoDB, Redis, BullMQ, Playwright]
+draft: false
+related: [deterministic-before-ai]
+---
+
+## Problem and constraints
+
+SpyGlow monitors public competitor websites and turns relevant changes into
+intelligence. The difficult part is not taking a snapshot. It is deciding whether
+a difference represents a real business event.
+
+Web pages are unstable inputs. A capture can be incomplete, blocked by a consent
+screen or affected by a temporary rendering problem. Markup can change without
+the visible meaning changing. A monitoring product that reports those events as
+competitor moves quickly loses trust.
+
+The system also has an economic constraint. Browser work and AI interpretation
+both carry cost, so the pipeline cannot treat every fetch and every difference
+as equally valuable.
+
+## Architecture
+
+I designed the monitoring path as a sequence of explicit responsibilities.
+
+1. The capture layer retrieves the public page and records the snapshot.
+2. A quality layer compares the result with a rolling baseline and identifies
+   thin or suspicious captures.
+3. A recheck layer gives suspicious results another chance before they become
+   accepted events.
+4. Deterministic comparison establishes what changed between valid snapshots.
+5. AI interpretation receives the evidence and adds a summary, significance and
+   useful context.
+6. Reports, alerts, AskGlow and evidence-linked battle cards consume the
+   validated intelligence.
+
+Scheduled work, browser processes, queues and notifications live around that
+core path. Watchdog and recovery behavior make the scheduler observable instead
+of assuming recurring work is healthy because a process is running.
+
+## Alternatives I rejected
+
+The shortest implementation was to send every pair of page captures to a model
+and ask it to identify the change. I rejected that as the primary comparison
+mechanism because it combines evidence collection, diffing and interpretation in
+one probabilistic step.
+
+I also rejected treating every small difference as an alert. More alerts can
+look like more value in a demo, but noise transfers the review cost to the user.
+The product needs to preserve important evidence while filtering changes that do
+not affect a competitive decision.
+
+## Hardest decision
+
+The hardest design decision was where AI should enter the pipeline.
+
+Using it early made the implementation look flexible but weakened the ability to
+explain failures. Using it only after quality and deterministic gates produced a
+cleaner contract: software establishes the event, then AI interprets it.
+
+That boundary also made cost behavior easier to control. Invalid captures and
+empty comparisons can stop before an expensive model call.
+
+## Outcome
+
+The resulting architecture keeps the evidence attached to the interpretation.
+A report or battle card can point back to the underlying observed change instead
+of presenting an unsupported conclusion.
+
+The product can recover from weak captures, avoid spending model calls on events
+that deterministic checks can reject and give operators clearer signals about
+which stage failed. The lesson extends beyond monitoring: an AI feature becomes
+more dependable when deterministic systems qualify its inputs and preserve its
+receipts.

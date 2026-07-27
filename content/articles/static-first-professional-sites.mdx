@@ -1,0 +1,89 @@
+---
+title: "Why a professional portfolio should be static first"
+description: A portfolio can keep rich content, strong SEO and a working contact path without turning every page into a runtime application.
+published: 2026-07-13
+tags: [Next.js, performance, SEO]
+draft: false
+related: [deterministic-before-ai, content-pipelines-need-receipts]
+---
+
+A professional portfolio is a marketing asset. Its main jobs are to load quickly,
+explain a clear point of view, provide evidence and make the next step easy.
+Most of those jobs do not require request-time rendering.
+
+That makes a portfolio a strong candidate for a static-first architecture.
+
+## Static first is a boundary, not a limitation
+
+Static first does not mean plain HTML maintained by hand. Content can still be
+structured, validated and rendered through reusable components. Articles can
+produce metadata, social images, structured data, sitemap entries and RSS items
+from one source file.
+
+The important boundary is when the work happens.
+
+Pages that depend only on repository content can be generated before deployment.
+The browser receives stable output without waiting for a database, content API
+or server render. Runtime execution is reserved for the small number of actions
+that genuinely need it, such as sending a contact message.
+
+## Performance follows from fewer responsibilities
+
+A page is easier to make fast when it has less work to do.
+
+Server components keep content rendering out of the client bundle. Local fonts
+remove a third-party request. Explicit image dimensions prevent layout movement.
+A small navigation component can own the mobile menu without making the entire
+page interactive.
+
+None of these choices is dramatic on its own. Together they reduce the number of
+things that can delay the first useful view or make the layout unstable.
+
+The same architecture also makes performance easier to reason about. If a page
+becomes dynamic or imports a large client dependency, that change is visible in
+the code instead of being normal everywhere.
+
+## SEO should be derived from the content model
+
+SEO is most reliable when it is part of publishing, not a checklist repeated by
+hand.
+
+An article already knows its title, description, publication date, updated date,
+tags and slug. Those fields should drive the page metadata, canonical URL,
+Open Graph card, structured data, sitemap and feed entry.
+
+Validation matters here. A missing description or malformed date should fail the
+publishing gate rather than quietly producing an incomplete page. Relationships
+between articles should point to real slugs. Unknown fields should be rejected so
+a typo does not disappear during parsing.
+
+This turns SEO correctness into a content contract.
+
+## Runtime features need narrow interfaces
+
+A contact form is different from an article. It accepts untrusted input and
+causes an external side effect.
+
+That path needs server-side validation, abuse controls, delivery error handling
+and a graceful fallback. It should not force the About, Work or Writing pages to
+become runtime-rendered. A narrow server action keeps the exception explicit.
+
+The same principle applies to a local content editor. Development tooling can
+write repository files without becoming a production CMS endpoint.
+
+## Portability improves when the app stays conventional
+
+A static-first Next.js site can deploy to a managed platform or run as a
+standalone Node process behind a reverse proxy. It does not need a proprietary
+database or runtime content service to render its core pages.
+
+That portability is useful even when the primary deployment target is known. It
+keeps the application understandable and gives the owner a clean exit path.
+
+## The design principle
+
+Make every page static by default. Add runtime execution only where a user action
+requires it, and keep that exception small enough to inspect.
+
+For a portfolio, this produces a fast site, a simpler operating model and an SEO
+surface that is generated from the same evidence visitors actually read.

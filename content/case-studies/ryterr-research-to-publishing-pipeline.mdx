@@ -1,0 +1,80 @@
+---
+title: "Designing Ryterr from research to publishing"
+description: How I structured an AI content product around evidence, reviewable stages, portable output and recoverable delivery.
+published: 2026-07-20
+role: Founder, product strategy and full-stack engineering
+stack: [Next.js, TypeScript, MongoDB, AI pipelines, Webhooks]
+draft: false
+related: [content-pipelines-need-receipts]
+---
+
+## Problem and constraints
+
+Ryterr turns a topic into an article that a website can publish. The initial
+product question looked simple: how should an AI system write a useful post?
+
+The production question was broader. The system had to research current sources,
+carry evidence into the draft, review claims, generate supporting assets, respect
+a brand voice, preserve an owned content format and deliver the approved result
+to different kinds of websites.
+
+Each stage can fail independently. A source can disappear. A claim can remain
+unsupported. Image generation can fail while the article is still valid. A CMS
+can reject an otherwise approved post. Billing and credits must also remain
+consistent if the pipeline stops halfway through.
+
+## Architecture
+
+I structured Ryterr as a staged pipeline rather than a single generation call.
+The major stages cover topic and search analysis, research, outline, draft,
+search structure, images, fact checking, quality review and persistence.
+
+The pipeline carries structured state forward. Research evidence informs the
+draft. Fact checking can identify and repair exact claims. Quality checks can
+report a specific weakness. Persistence stores the final article together with
+its review state and generated assets.
+
+Publishing is a separate layer. The reviewed post has a stable public contract
+and can move through webhooks, a read-only Content API, WordPress, Ghost or
+GitHub. Markdown remains the canonical owned format, with sanitized HTML for
+systems that need rendered content.
+
+Delivery attempts have their own state and retry path. A temporary publishing
+failure does not require the article to be researched and generated again.
+
+## Alternatives I rejected
+
+I rejected a one-shot prompt as the core architecture. It produces text quickly,
+but it provides weak control over source use, review, recovery and product
+feedback.
+
+I also rejected binding the canonical article to one editor or CMS. That would
+make publishing convenient for one integration while creating lock-in for every
+other destination.
+
+Finally, I kept unshipped connectors out of the active product story. An
+integration should not be marketed as available until its authentication,
+delivery and failure states are implemented together.
+
+## Hardest decision
+
+The hardest decision was deciding what counted as complete.
+
+If completion meant that prose existed, the pipeline could finish early. If it
+meant that every optional asset and remote destination succeeded, one secondary
+failure could invalidate useful work.
+
+The system therefore distinguishes the reviewed content artifact from its
+delivery state. The article can be complete and owned while a connection records
+a recoverable publishing failure.
+
+## Outcome
+
+Ryterr now behaves like a publishing system rather than an isolated writer. The
+pipeline exposes meaningful stages, keeps research and review evidence, returns
+portable files and records what happened after publication was requested.
+
+That architecture gives users a clearer artifact and gives operators better
+failure boundaries. The broader lesson is that an AI product becomes more useful
+when it owns the workflow around generation: evidence before the draft, review
+after the draft and accountable delivery at the end.

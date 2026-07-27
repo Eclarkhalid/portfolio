@@ -1,0 +1,34 @@
+---
+title: Ryterr
+description: Research and publishing system that turns a topic into a fact-checked article and delivers it to a connected website.
+url: https://ryterr.com
+status: active
+order: 2
+stack: [Next.js, TypeScript, MongoDB, AI pipelines, Webhooks]
+published: 2026-07-27
+updated: 2026-07-27
+---
+
+Ryterr is a research and publishing system I founded and built for people who
+need useful articles without treating a one-shot AI draft as finished work.
+
+## The product problem
+
+Generating prose is only one part of publishing. A credible article also needs
+current sources, claim review, a consistent voice, usable images, clean
+structure and a reliable path into the website that owns it.
+
+## The engineering approach
+
+Ryterr uses a staged pipeline for topic analysis, research, outlining, drafting,
+search structure, images, fact checking, quality review and persistence.
+Separating the work into explicit stages makes failures visible and allows each
+stage to carry its evidence forward instead of hiding everything inside one
+prompt.
+
+The finished post remains portable. Ryterr produces Markdown and sanitized HTML,
+keeps research and review records, and supports scheduled delivery through
+webhooks, a Content API, WordPress, Ghost and GitHub. Delivery attempts are
+tracked so publishing failures can be retried instead of silently losing work.
+
+Read the [case study on the research-to-publishing pipeline](/work/ryterr-research-to-publishing-pipeline).

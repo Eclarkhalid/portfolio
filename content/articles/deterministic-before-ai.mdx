@@ -1,0 +1,91 @@
+---
+title: "Deterministic gates make AI systems more reliable"
+description: Reliable AI workflows establish evidence with deterministic checks before asking a model to interpret meaning or recommend action.
+published: 2026-07-27
+tags: [AI systems, reliability, architecture]
+draft: false
+related: [content-pipelines-need-receipts, static-first-professional-sites]
+---
+
+A model can interpret an event brilliantly and still be working from a bad event.
+That distinction matters in production systems.
+
+When an AI workflow starts directly from raw input, every upstream failure becomes
+an AI problem. A partial page load looks like deleted content. A consent screen
+looks like a redesign. A duplicated source looks like corroboration. The model
+may produce a fluent answer, but fluency cannot repair missing evidence.
+
+The more reliable pattern is to establish what happened before asking what it
+means.
+
+## Separate evidence from interpretation
+
+I think about the pipeline in two parts.
+
+The evidence path is deterministic wherever possible. It acquires data, checks
+its quality, rejects malformed input, retries suspicious results, normalizes the
+representation and computes a stable comparison.
+
+The interpretation path starts only after those gates pass. It can summarize the
+change, classify its importance, connect it to prior context and suggest a next
+step.
+
+This separation gives each layer a clear contract. Deterministic code does not
+need to understand strategy. The model does not need to decide whether the input
+was complete enough to trust.
+
+## A practical sequence
+
+A dependable workflow usually needs more than one validation point:
+
+1. **Acquire:** collect the source with an explicit success definition.
+2. **Assess quality:** check whether the result has the expected structure,
+   volume and signals.
+3. **Recheck suspicion:** repeat thin or unusual captures before accepting them
+   as real events.
+4. **Compare deterministically:** identify the concrete difference without
+   asking a model to invent the comparison.
+5. **Interpret:** give the validated change and relevant context to the model.
+6. **Deliver:** persist the evidence with the interpretation so a person can
+   inspect why an alert or recommendation exists.
+
+The exact checks differ by product. The architectural point stays the same: each
+expensive or probabilistic step should receive input that a cheaper, more
+predictable step has already qualified.
+
+## Why one large prompt is not enough
+
+A single model call looks attractive because the implementation is short. It
+also hides too many responsibilities inside one request.
+
+The model must infer whether the source is complete, identify the change,
+classify it, explain it and decide what to do next. When the output is wrong,
+the system cannot easily show which responsibility failed. Retrying the same
+prompt may change the answer without improving the evidence.
+
+A staged system is more observable. It can say that capture quality failed, that
+a recheck recovered the source, or that the comparison found no meaningful
+change. Those are operational facts, not opinions.
+
+## Reliability also controls cost
+
+Deterministic gates are not only defensive. They keep model usage focused.
+
+If a system can reject an incomplete input or prove that nothing changed, it
+should not pay an AI model to reach the same conclusion. Models are most useful
+where judgment is actually required: explaining significance, connecting
+context and helping a person decide.
+
+This cost boundary becomes more important as a product grows. A small amount of
+noise multiplied across scheduled jobs, retries and users becomes infrastructure
+load and model spend.
+
+## The design principle
+
+Use deterministic software to establish the event. Use AI to interpret the
+event.
+
+That boundary does not remove uncertainty, but it makes uncertainty visible. It
+also produces systems that are easier to test, debug and trust because every
+recommendation can be traced back to evidence that passed an explicit set of
+gates.
