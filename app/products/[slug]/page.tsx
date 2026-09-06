@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
-  return pageMetadata({ title: product.meta.title, description: product.meta.description, path: `/products/${slug}` });
+  return pageMetadata({ title: product.meta.title, description: product.meta.description, path: `/products/${slug}`, socialCard: "generated" });
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <header className="grid gap-8 border-b border-neutral-200 pb-12 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-10">
           <div className={`flex h-24 w-24 items-center justify-center rounded-3xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}>
             {visual ? (
-              <Image src={visual.mark} alt={visual.markAlt} width={visual.detailWidth} height={visual.detailHeight} className="object-contain" priority />
+              <Image src={visual.mark} alt={visual.markAlt} width={visual.detailWidth} height={visual.detailHeight} className="object-contain" preload />
             ) : (
               <span className="text-2xl font-semibold text-neutral-600">{product.meta.title.slice(0, 1)}</span>
             )}

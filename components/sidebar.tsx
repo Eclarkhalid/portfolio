@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { BrandIcon } from "@/components/brand-icon";
 import { navlinks, socials } from "@/lib/nav";
 import { profile } from "@/content/profile";
 
@@ -122,7 +123,7 @@ export function Sidebar() {
                 className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-700 transition hover:bg-white hover:text-sky-700"
                 aria-label={`${link.label}, opens in a new tab`}
               >
-                <link.icon aria-hidden="true" className="h-3.5 w-3.5" />
+                <BrandIcon icon={link.icon} color="currentColor" className="h-3.5 w-3.5" />
               </a>
             ))}
           </div>

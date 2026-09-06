@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
-  const base = pageMetadata({ title: article.meta.title, description: article.meta.description, path: `/writing/${slug}` });
+  const base = pageMetadata({ title: article.meta.title, description: article.meta.description, path: `/writing/${slug}`, socialCard: "generated" });
   return {
     ...base,
     openGraph: {

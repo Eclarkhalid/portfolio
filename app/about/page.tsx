@@ -21,7 +21,7 @@ export default function AboutPage() {
 
       <section className="mt-20 grid gap-10 border-t border-neutral-200 py-10 md:grid-cols-[16rem_minmax(0,1fr)] md:gap-16">
         <div>
-          <Image src={profile.avatar} alt={profile.name} width={256} height={256} className="aspect-square w-full max-w-64 rounded-3xl object-cover" priority />
+          <Image src={profile.avatar} alt={profile.name} width={256} height={256} className="aspect-square w-full max-w-64 rounded-3xl object-cover" preload />
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600">{profile.name}</p>
           <p className="mt-1 text-sm text-neutral-700">Software engineer, technical leader and product founder</p>
         </div>

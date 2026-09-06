@@ -51,7 +51,6 @@ export default function HomePage() {
             fill
             sizes="34rem"
             className="object-contain object-right-top"
-            priority
           />
         </div>
         <div

@@ -1,36 +1,30 @@
-import {
-  Home,
-  Briefcase,
-  Package,
-  FolderKanban,
-  FileText,
-  MessageCircle,
-  Mail,
-  Github,
-  Youtube,
-  Linkedin,
-  Twitter,
-  BadgeCheck,
-  type LucideIcon,
-} from "lucide-react";
+import { siFiverr, siGithub, siX, siYoutube } from "simple-icons";
+import type { BrandGlyph } from "@/components/brand-icon";
 import { profile } from "@/content/profile";
 
-export type NavLink = { href: string; label: string; icon: LucideIcon };
+export type NavLink = { href: string; label: string };
+export type SocialLink = NavLink & { icon: BrandGlyph };
+
+/** simple-icons does not distribute the LinkedIn mark, so the glyph lives here. */
+const linkedin: BrandGlyph = {
+  hex: "0A66C2",
+  path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+};
 
 export const navlinks: NavLink[] = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/experience", label: "Experience", icon: Briefcase },
-  { href: "/products", label: "Products", icon: Package },
-  { href: "/work", label: "Case Studies", icon: FolderKanban },
-  { href: "/writing", label: "Writing", icon: FileText },
-  { href: "/about", label: "About", icon: MessageCircle },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/", label: "Home" },
+  { href: "/experience", label: "Experience" },
+  { href: "/products", label: "Products" },
+  { href: "/work", label: "Case Studies" },
+  { href: "/writing", label: "Writing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
-export const socials: NavLink[] = [
-  { href: profile.links.github, label: "GitHub", icon: Github },
-  { href: profile.links.x, label: "X / Twitter", icon: Twitter },
-  { href: profile.links.youtube, label: "YouTube", icon: Youtube },
-  { href: profile.links.linkedin, label: "LinkedIn", icon: Linkedin },
-  { href: profile.links.fiverr, label: "Fiverr", icon: BadgeCheck },
+export const socials: SocialLink[] = [
+  { href: profile.links.github, label: "GitHub", icon: siGithub },
+  { href: profile.links.x, label: "X / Twitter", icon: siX },
+  { href: profile.links.youtube, label: "YouTube", icon: siYoutube },
+  { href: profile.links.linkedin, label: "LinkedIn", icon: linkedin },
+  { href: profile.links.fiverr, label: "Fiverr", icon: siFiverr },
 ];

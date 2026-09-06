@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import { BrandIcon } from "@/components/brand-icon";
 import {
   siTypescript,
   siNextdotjs,
@@ -27,19 +28,6 @@ const icons: Record<string, SimpleIcon> = {
   Nginx: siNginx,
   "Tailwind CSS": siTailwindcss,
 };
-
-function BrandIcon({ icon }: { icon: SimpleIcon }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4 shrink-0"
-      fill={`#${icon.hex}`}
-      aria-hidden="true"
-    >
-      <path d={icon.path} />
-    </svg>
-  );
-}
 
 export function TechStack({ items }: { items: readonly string[] }) {
   return (

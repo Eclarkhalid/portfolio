@@ -105,7 +105,8 @@ export async function sendMessage(
 
     if (result.error) throw new Error(result.error.message);
     return { ok: true };
-  } catch {
+  } catch (error) {
+    console.error("Contact delivery failed:", error);
     return {
       ok: false,
       error: `Something went wrong. Email me at ${profile.email}.`,
