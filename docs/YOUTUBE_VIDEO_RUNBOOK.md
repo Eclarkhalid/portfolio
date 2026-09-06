@@ -2,6 +2,27 @@
 
 Use this as the filming outline. The exact copyable commands live in `docs/VPS_DEPLOYMENT_GUIDE.md`.
 
+## Confirmed setup for this recording
+
+Use these values throughout the demonstration:
+
+```text
+Local VPS alias: portfolio-prod
+GitHub repository: https://github.com/Eclarkhalid/portfolio
+Repository visibility: public
+Application directory: /var/www/eclarkhalid.com/app
+Deployment user: deploy
+systemd service: eclarkhalid
+```
+
+There are three separate authentication boundaries:
+
+1. Your local Ubuntu terminal connects to the VPS using the dedicated `portfolio_deploy` SSH key and the `portfolio-prod` alias.
+2. The VPS clones the public GitHub repository over HTTPS without a username, password, token, or GitHub SSH key.
+3. Claude Code authenticates separately through the Claude login flow.
+
+GitHub account passwords are not used for Git operations. If the repository becomes private later, use the read-only GitHub deploy-key procedure in `docs/VPS_DEPLOYMENT_GUIDE.md`.
+
 ## Video promise
 
 By the end of the video, the viewer will have purchased an Ubuntu VPS, deployed a real Next.js 16 application, kept it running with systemd, placed Nginx in front of it, connected a domain, and enabled HTTPS.
@@ -31,8 +52,9 @@ Show the finished portfolio on one side and a terminal or server icon on the oth
 - [ ] Decide which VPS provider will be shown.
 - [ ] Confirm the provider offers Ubuntu 24.04 LTS and a public IPv4 address.
 - [ ] Confirm the GitHub repository exists and contains the final commit.
-- [ ] Decide whether the repository will be public or private.
-- [ ] If private, prepare to add a read-only deploy key.
+- [ ] Confirm `https://github.com/Eclarkhalid/portfolio` is public and opens in a signed-out browser.
+- [ ] Confirm `ssh portfolio-prod` connects using the dedicated SSH key.
+- [ ] Prepare the Claude Code login before recording, or pause the recording during authentication.
 - [ ] Confirm `eclarkhalid.com` DNS can be edited during the recording.
 - [ ] Log out of unrelated dashboards and close private browser tabs.
 - [ ] Increase terminal font size and browser zoom for viewers.
@@ -60,6 +82,7 @@ Do not show:
 - Resend API keys
 - The real contents of `.env.production`
 - Recovery codes or billing information
+- Claude login URLs, authorization codes, session credentials, or account details
 
 Use the provider console only when required. Crop or blur billing and account details.
 
@@ -111,7 +134,46 @@ nslookup www.eclarkhalid.com
 
 ### 08:00 Connect and create a safer user
 
-SSH into the server, confirm Ubuntu, create the `deploy` user, and verify a second login.
+Connect using the alias already configured on the local Ubuntu terminal:
+
+```bash
+ssh portfolio-prod
+```
+
+The alias initially logs in as `root` using `~/.ssh/portfolio_deploy`. Confirm the server and current user:
+
+```bash
+hostname
+whoami
+lsb_release -a
+```
+
+Create the application user if it does not exist:
+
+```bash
+adduser deploy
+usermod -aG sudo deploy
+install -d -m 700 -o deploy -g deploy /home/deploy/.ssh
+cp /root/.ssh/authorized_keys /home/deploy/.ssh/authorized_keys
+chown deploy:deploy /home/deploy/.ssh/authorized_keys
+chmod 600 /home/deploy/.ssh/authorized_keys
+```
+
+Keep the root session open. In a second local terminal, test the same key as `deploy`:
+
+```bash
+ssh deploy@portfolio-prod
+sudo whoami
+```
+
+The final command should print `root`. After that succeeds, change `User root` to `User deploy` under `Host portfolio-prod` in the local `~/.ssh/config`, then verify:
+
+```bash
+ssh portfolio-prod
+whoami
+```
+
+The final command should now print `deploy`.
 
 Teaching point: use root for initial setup only. Run the application as a non-root user.
 
@@ -137,11 +199,79 @@ Explain that this Next.js version requires Node.js 20.9 or newer and the tutoria
 
 ### 19:00 Clone from GitHub
 
-For a public repository, use HTTPS. For a private repository, demonstrate a read-only deploy key.
+This portfolio repository is public, so clone it over HTTPS without credentials:
+
+```bash
+sudo mkdir -p /var/www/eclarkhalid.com
+sudo chown deploy:www-data /var/www/eclarkhalid.com
+cd /var/www/eclarkhalid.com
+git clone https://github.com/Eclarkhalid/portfolio.git app
+cd app
+git remote -v
+git status --short --branch
+```
+
+Narration:
+
+> GitHub account passwords are no longer accepted for authenticated Git operations. This repository is public, so HTTPS cloning and pulling require no credentials. For a private production repository, use a separate read-only deploy key instead of a personal password or token.
+
+Do not reuse `~/.ssh/portfolio_deploy` for GitHub. That key connects the local computer to the VPS. A private repository would receive a separate server-to-GitHub key.
 
 Teaching point: never paste a personal access token into a recorded terminal. A deploy key can be limited to one repository and kept read-only.
 
-### 23:00 Configure environment variables
+### 23:00 Install Claude Code as a guarded debugging assistant
+
+Run Claude Code as `deploy`, never as `root`. First confirm Node.js and npm are available:
+
+```bash
+node --version
+npm --version
+```
+
+Configure a user-owned npm location and install Claude Code without `sudo`:
+
+```bash
+mkdir -p "$HOME/.local/npm"
+npm config set prefix "$HOME/.local/npm"
+echo 'export PATH="$HOME/.local/npm/bin:$PATH"' >> ~/.bashrc
+export PATH="$HOME/.local/npm/bin:$PATH"
+npm install -g @anthropic-ai/claude-code
+claude doctor
+```
+
+Start Claude Code from the portfolio checkout:
+
+```bash
+cd /var/www/eclarkhalid.com/app
+claude
+```
+
+Pause or crop the recording during Claude authentication. Do not expose the login URL, authorization code, account details, or stored credentials.
+
+Paste this production-safe instruction as the first prompt:
+
+```text
+You are inside the production VPS checkout for eclarkhalid.com.
+
+Your role is to help diagnose deployment issues safely. Read AGENTS.md and docs/VPS_DEPLOYMENT_GUIDE.md before advising.
+
+Production safety rules:
+
+1. Begin with read-only investigation.
+2. Never read, print, copy, summarize, or expose .env.production, any .env file, credentials, private SSH keys, tokens, or secrets.
+3. Do not edit files or run commands that change the server unless I explicitly approve the exact action.
+4. Do not run git pull, git reset, git checkout, npm install, apt commands, systemctl restart, nginx reload, firewall commands, chmod, or chown without approval.
+5. Do not push commits from this production server.
+6. Before proposing a fix, explain the evidence, likely cause, affected service, exact command, risk, and rollback.
+7. Prefer read-only checks such as git status, git log, version checks, systemctl status, journalctl logs, nginx configuration tests, process inspection, disk and memory usage, and localhost HTTP checks.
+8. Never use dangerously-skip-permissions.
+
+Acknowledge these rules and wait for a debugging issue.
+```
+
+Claude is a backup debugging assistant, not part of the application runtime. The portfolio must continue running normally when Claude Code is closed.
+
+### 27:00 Configure environment variables
 
 Create `.env.production` without revealing real values.
 
@@ -150,7 +280,7 @@ Explain the two categories:
 - `RESEND_API_KEY` and `CONTACT_FROM` are used by the contact Server Action at runtime.
 - Search-engine verification tokens influence generated metadata and must exist before the build.
 
-### 26:00 Run the quality gates
+### 30:00 Run the quality gates
 
 ```bash
 npm ci
@@ -167,13 +297,13 @@ Explain what `build:vps` does:
 
 Show the route table from the build. Point out static pages, SSG detail routes, and the contact/server execution boundary.
 
-### 31:00 Test the standalone server
+### 35:00 Test the standalone server
 
 Run `server.js` in the foreground and test it from a second SSH session with Curl.
 
 Teaching point: verify each layer before adding the next one. Test Next.js before systemd, systemd before Nginx, and HTTP before HTTPS.
 
-### 34:00 Keep the app running with systemd
+### 38:00 Keep the app running with systemd
 
 Install the supplied service file, enable it, and inspect logs.
 
@@ -186,7 +316,7 @@ sudo journalctl -u eclarkhalid -n 50 --no-pager
 
 Explain that systemd starts the app after reboot and restarts it after a crash.
 
-### 38:00 Put Nginx in front
+### 42:00 Put Nginx in front
 
 Install the supplied Nginx configuration, run `nginx -t`, and reload.
 
@@ -197,13 +327,13 @@ Teaching points:
 - Nginx forwards the host, client IP, and protocol.
 - The configuration disables proxy buffering so App Router streaming remains possible.
 
-### 42:00 Add HTTPS
+### 46:00 Add HTTPS
 
 Install Certbot through Snap and request certificates for the apex and `www` names.
 
 Run the renewal dry test. Explain that HTTPS is not finished until automatic renewal is verified.
 
-### 46:00 Production verification
+### 50:00 Production verification
 
 Show the live portfolio and test the technical endpoints:
 
@@ -215,7 +345,7 @@ Show the live portfolio and test the technical endpoints:
 
 Submit the contact form only if Resend is configured. Otherwise demonstrate the direct-email fallback and explain why graceful failure is better than silently losing a lead.
 
-### 50:00 Show how to deploy an update
+### 54:00 Show how to deploy an update
 
 Walk through:
 
@@ -230,7 +360,7 @@ sudo systemctl restart eclarkhalid
 
 Explain why the app is rebuilt before the service restart. Mention that a later video can introduce release directories, health-checked switching, and automated CI/CD.
 
-### 53:00 Closing summary
+### 57:00 Closing summary
 
 Recap:
 
