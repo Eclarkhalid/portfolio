@@ -2,101 +2,102 @@
   <title id="t">Token layers</title>
   <desc id="d">Raw values feed semantic tokens, semantic tokens feed components, and components build screens. Components only reference semantic tokens.</desc>
   <style>
-    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #171717; }
-    .kicker { font-size: 13px; font-weight: 600; letter-spacing: 2.4px; fill: #0369a1; }
-    .title { font-size: 22px; font-weight: 600; }
-    .body { font-size: 15px; fill: #525252; }
-    .mono { font-size: 14px; fill: #404040; font-family: "Cascadia Code", Consolas, "SF Mono", monospace; }
-    .chip { font-size: 14px; font-weight: 500; }
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #262626; }
+    .kicker { font-size: 14px; font-weight: 600;  fill: #0369a1; }
+    .num { font-size: 12px; font-weight: 600; fill: #0369a1; }
+    .title { font-size: 20px; font-weight: 600; fill: #171717; }
+    .body { font-size: 14px; fill: #404040; }
+    .mono { font-size: 13px; fill: #525252; font-family: "Cascadia Code", Consolas, "SF Mono", monospace; }
+    .chip { font-size: 13px; font-weight: 500; }
   </style>
   <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="40" y="58" class="kicker">From values to screens</text>
 
-  <!-- column frames -->
+  <g fill="#fafafa" stroke="#d4d4d4">
+    <rect x="40" y="90" width="250" height="510" rx="16"/>
+    <rect x="330" y="90" width="250" height="510" rx="16"/>
+    <rect x="620" y="90" width="250" height="510" rx="16"/>
+    <rect x="910" y="90" width="250" height="510" rx="16"/>
+  </g>
+  <g fill="none" stroke="#737373" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M298 345h24M316 339l6 6-6 6"/>
+    <path d="M588 345h24M606 339l6 6-6 6"/>
+    <path d="M878 345h24M896 339l6 6-6 6"/>
+  </g>
+
+  <!-- 1 -->
+  <text x="64" y="132" class="num">01</text>
+  <text x="64" y="162" class="title">Raw values</text>
+  <text x="64" y="186" class="body">What the brand is made of</text>
   <g>
-    <rect x="40" y="96" width="250" height="500" rx="20" fill="#fafafa" stroke="#e5e5e5"/>
-    <rect x="330" y="96" width="250" height="500" rx="20" fill="#f0f9ff" stroke="#bae6fd"/>
-    <rect x="620" y="96" width="250" height="500" rx="20" fill="#f5f3ff" stroke="#ddd6fe"/>
-    <rect x="910" y="96" width="250" height="500" rx="20" fill="#fafafa" stroke="#e5e5e5"/>
+    <circle cx="74" cy="236" r="10" fill="#2563eb"/><text x="96" y="241" class="mono">#2563EB</text>
+    <circle cx="74" cy="272" r="10" fill="#16a34a"/><text x="96" y="277" class="mono">#16A34A</text>
+    <circle cx="74" cy="308" r="10" fill="#f5f5f5" stroke="#d4d4d4"/><text x="96" y="313" class="mono">#F5F5F5</text>
+    <rect x="64" y="334" width="20" height="20" rx="6" fill="none" stroke="#a3a3a3" stroke-width="1.5"/><text x="96" y="349" class="mono">0.875rem</text>
+    <text x="64" y="392" class="mono">Inter 400 / 500 / 600</text>
+    <text x="64" y="416" class="mono">4px spacing steps</text>
   </g>
+  <text x="64" y="552" class="body">Never used directly</text>
+  <text x="64" y="572" class="body">by a component</text>
 
-  <!-- arrows -->
-  <g fill="none" stroke="#a3a3a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M296 346h28M316 338l8 8-8 8"/>
-    <path d="M586 346h28M606 338l8 8-8 8"/>
-    <path d="M876 346h28M896 338l8 8-8 8"/>
+  <!-- 2 -->
+  <text x="354" y="132" class="num">02</text>
+  <text x="354" y="162" class="title">Semantic tokens</text>
+  <text x="354" y="186" class="body">What each value means</text>
+  <g fill="#ffffff" stroke="#d4d4d4">
+    <rect x="354" y="218" width="202" height="32" rx="8"/>
+    <rect x="354" y="258" width="202" height="32" rx="8"/>
+    <rect x="354" y="298" width="202" height="32" rx="8"/>
+    <rect x="354" y="338" width="202" height="32" rx="8"/>
+    <rect x="354" y="378" width="202" height="32" rx="8"/>
   </g>
+  <text x="370" y="239" class="mono">primary</text>
+  <text x="370" y="279" class="mono">success-soft</text>
+  <text x="370" y="319" class="mono">muted-foreground</text>
+  <text x="370" y="359" class="mono">border</text>
+  <text x="370" y="399" class="mono">radius-lg</text>
+  <text x="354" y="532" class="body">Each has a light and</text>
+  <text x="354" y="552" class="body">a dark value, so dark</text>
+  <text x="354" y="572" class="body">mode comes for free</text>
 
-  <text x="40" y="60" class="kicker">FROM VALUES TO SCREENS</text>
-
-  <!-- 1 primitives -->
-  <text x="64" y="140" class="kicker">01</text>
-  <text x="64" y="172" class="title">Raw values</text>
-  <text x="64" y="198" class="body">What the brand is made of</text>
+  <!-- 3 -->
+  <text x="644" y="132" class="num">03</text>
+  <text x="644" y="162" class="title">Components</text>
+  <text x="644" y="186" class="body">Built only from tokens</text>
   <g>
-    <rect x="64" y="228" width="28" height="28" rx="6" fill="#2563eb"/><text x="104" y="247" class="mono">#2563EB</text>
-    <rect x="64" y="272" width="28" height="28" rx="6" fill="#16a34a"/><text x="104" y="291" class="mono">#16A34A</text>
-    <rect x="64" y="316" width="28" height="28" rx="6" fill="#f5f5f5" stroke="#d4d4d4"/><text x="104" y="335" class="mono">#F5F5F5</text>
-    <rect x="64" y="360" width="28" height="28" rx="14" fill="none" stroke="#525252" stroke-width="2"/><text x="104" y="379" class="mono">0.875rem</text>
-    <text x="64" y="425" class="mono">Inter 400 / 500 / 600</text>
-    <text x="64" y="452" class="mono">4px spacing steps</text>
+    <rect x="644" y="218" width="124" height="34" rx="17" fill="#262626"/><text x="666" y="240" class="chip" style="fill:#ffffff">Save changes</text>
+    <rect x="644" y="266" width="112" height="28" rx="14" fill="#f0fdf4" stroke="#dcfce7"/><circle cx="660" cy="280" r="3.5" fill="#16a34a"/><text x="671" y="285" class="chip" style="fill:#3f6212;font-size:12px">Approved</text>
+    <rect x="644" y="310" width="202" height="104" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
+    <line x1="644" y1="345" x2="846" y2="345" stroke="#e5e5e5"/>
+    <line x1="644" y1="380" x2="846" y2="380" stroke="#e5e5e5"/>
+    <rect x="660" y="323" width="80" height="8" rx="4" fill="#e5e5e5"/>
+    <rect x="660" y="358" width="110" height="8" rx="4" fill="#f0f0f0"/>
+    <rect x="660" y="393" width="64" height="8" rx="4" fill="#f0f0f0"/>
   </g>
-  <text x="64" y="540" class="body">Never used directly</text>
-  <text x="64" y="562" class="body">by a component</text>
+  <text x="644" y="532" class="body">No hex codes, no</text>
+  <text x="644" y="552" class="body">one-off sizes in the</text>
+  <text x="644" y="572" class="body">component source</text>
 
-  <!-- 2 semantic -->
-  <text x="354" y="140" class="kicker">02</text>
-  <text x="354" y="172" class="title">Semantic tokens</text>
-  <text x="354" y="198" class="body">What each value means</text>
+  <!-- 4 -->
+  <text x="934" y="132" class="num">04</text>
+  <text x="934" y="162" class="title">Screens</text>
+  <text x="934" y="186" class="body">Composed from components</text>
   <g>
-    <rect x="354" y="226" width="202" height="34" rx="17" fill="#ffffff" stroke="#bae6fd"/><text x="372" y="248" class="mono">primary</text>
-    <rect x="354" y="270" width="202" height="34" rx="17" fill="#ffffff" stroke="#bae6fd"/><text x="372" y="292" class="mono">success-soft</text>
-    <rect x="354" y="314" width="202" height="34" rx="17" fill="#ffffff" stroke="#bae6fd"/><text x="372" y="336" class="mono">muted-foreground</text>
-    <rect x="354" y="358" width="202" height="34" rx="17" fill="#ffffff" stroke="#bae6fd"/><text x="372" y="380" class="mono">border</text>
-    <rect x="354" y="402" width="202" height="34" rx="17" fill="#ffffff" stroke="#bae6fd"/><text x="372" y="424" class="mono">radius-lg</text>
+    <rect x="934" y="218" width="202" height="196" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
+    <line x1="974" y1="218" x2="974" y2="414" stroke="#d4d4d4"/>
+    <rect x="946" y="232" width="16" height="4" rx="2" fill="#d4d4d4"/>
+    <rect x="946" y="244" width="16" height="4" rx="2" fill="#e5e5e5"/>
+    <rect x="946" y="256" width="16" height="4" rx="2" fill="#e5e5e5"/>
+    <rect x="988" y="234" width="84" height="9" rx="4.5" fill="#d4d4d4"/>
+    <rect x="988" y="256" width="134" height="40" rx="8" fill="#fafafa" stroke="#e5e5e5"/>
+    <line x1="988" y1="318" x2="1122" y2="318" stroke="#e5e5e5"/>
+    <line x1="988" y1="348" x2="1122" y2="348" stroke="#e5e5e5"/>
+    <line x1="988" y1="378" x2="1122" y2="378" stroke="#e5e5e5"/>
+    <rect x="988" y="328" width="62" height="7" rx="3.5" fill="#e5e5e5"/><circle cx="1110" cy="331" r="3.5" fill="#16a34a"/>
+    <rect x="988" y="358" width="78" height="7" rx="3.5" fill="#f0f0f0"/><circle cx="1110" cy="361" r="3.5" fill="#d97706"/>
+    <rect x="988" y="388" width="52" height="7" rx="3.5" fill="#f0f0f0"/><circle cx="1110" cy="391" r="3.5" fill="#2563eb"/>
   </g>
-  <text x="354" y="518" class="body">Each has a light and</text>
-  <text x="354" y="540" class="body">a dark value, so dark</text>
-  <text x="354" y="562" class="body">mode comes for free</text>
-
-  <!-- 3 components -->
-  <text x="644" y="140" class="kicker">03</text>
-  <text x="644" y="172" class="title">Components</text>
-  <text x="644" y="198" class="body">Built only from tokens</text>
-  <g>
-    <rect x="644" y="228" width="132" height="36" rx="10" fill="#2563eb"/><text x="667" y="251" class="chip" style="fill:#ffffff">Save changes</text>
-    <rect x="644" y="282" width="128" height="30" rx="15" fill="#dcfce7" stroke="#bbf7d0"/><circle cx="662" cy="297" r="4" fill="#16a34a"/><text x="674" y="302" class="chip" style="fill:#166534;font-size:13px">Approved</text>
-    <rect x="644" y="330" width="202" height="118" rx="12" fill="#ffffff" stroke="#e5e5e5"/>
-    <line x1="644" y1="370" x2="846" y2="370" stroke="#e5e5e5"/>
-    <line x1="644" y1="409" x2="846" y2="409" stroke="#e5e5e5"/>
-    <rect x="660" y="345" width="90" height="10" rx="5" fill="#d4d4d4"/>
-    <rect x="660" y="384" width="120" height="10" rx="5" fill="#e5e5e5"/>
-    <rect x="660" y="423" width="70" height="10" rx="5" fill="#e5e5e5"/>
-  </g>
-  <text x="644" y="518" class="body">No hex codes, no</text>
-  <text x="644" y="540" class="body">one-off sizes in the</text>
-  <text x="644" y="562" class="body">component source</text>
-
-  <!-- 4 screens -->
-  <text x="934" y="140" class="kicker">04</text>
-  <text x="934" y="172" class="title">Screens</text>
-  <text x="934" y="198" class="body">Composed from components</text>
-  <g>
-    <rect x="934" y="228" width="202" height="220" rx="12" fill="#ffffff" stroke="#e5e5e5"/>
-    <rect x="934" y="228" width="42" height="220" rx="12" fill="#262626"/>
-    <rect x="964" y="228" width="12" height="220" fill="#262626"/>
-    <rect x="990" y="246" width="100" height="12" rx="6" fill="#171717"/>
-    <rect x="990" y="272" width="132" height="44" rx="10" fill="#f0f9ff" stroke="#bae6fd"/>
-    <line x1="990" y1="340" x2="1122" y2="340" stroke="#e5e5e5"/>
-    <line x1="990" y1="370" x2="1122" y2="370" stroke="#e5e5e5"/>
-    <line x1="990" y1="400" x2="1122" y2="400" stroke="#e5e5e5"/>
-    <rect x="990" y="350" width="70" height="9" rx="4.5" fill="#d4d4d4"/>
-    <rect x="1074" y="348" width="44" height="14" rx="7" fill="#dcfce7"/>
-    <rect x="990" y="380" width="86" height="9" rx="4.5" fill="#e5e5e5"/>
-    <rect x="1074" y="378" width="44" height="14" rx="7" fill="#fef3c7"/>
-    <rect x="990" y="410" width="60" height="9" rx="4.5" fill="#e5e5e5"/>
-    <rect x="1074" y="408" width="44" height="14" rx="7" fill="#dbeafe"/>
-  </g>
-  <text x="934" y="518" class="body">Change a token and</text>
-  <text x="934" y="540" class="body">every screen follows</text>
-  <text x="934" y="562" class="body">in light and dark</text>
+  <text x="934" y="532" class="body">Change a token and</text>
+  <text x="934" y="552" class="body">every screen follows</text>
+  <text x="934" y="572" class="body">in light and dark</text>
 </svg>

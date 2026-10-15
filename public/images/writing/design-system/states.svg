@@ -2,95 +2,85 @@
   <title id="t">Every state is designed</title>
   <desc id="d">An action moves from idle to a pending state labelled Saving, then to a success message that disappears or an error message that stays with a way to try again. A collection has designed loading, empty and error states, and shows a dash rather than zero when a value is unknown.</desc>
   <style>
-    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #171717; }
-    .kicker { font-size: 13px; font-weight: 600; letter-spacing: 2.4px; fill: #0369a1; }
-    .step { font-size: 12px; font-weight: 600; letter-spacing: 1.6px; fill: #737373; }
-    .body { font-size: 14px; fill: #525252; }
-    .btn { font-size: 14px; font-weight: 500; }
-    .toast { font-size: 14px; font-weight: 500; }
-    .big { font-size: 34px; font-weight: 600; }
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #262626; }
+    .kicker { font-size: 14px; font-weight: 600;  fill: #0369a1; }
+    .step { font-size: 13px; font-weight: 600;  fill: #525252; }
+    .body { font-size: 13px; fill: #404040; }
+    .btn { font-size: 13px; font-weight: 500; }
+    .toast { font-size: 13px; font-weight: 500; fill: #262626; }
+    .big { font-size: 30px; font-weight: 600; }
   </style>
   <rect width="1200" height="675" fill="#ffffff"/>
 
-  <text x="60" y="64" class="kicker">AN ACTION</text>
+  <text x="60" y="64" class="kicker">An action</text>
 
-  <!-- idle -->
-  <text x="60" y="118" class="step">IDLE</text>
-  <rect x="60" y="132" width="150" height="42" rx="12" fill="#2563eb"/>
-  <text x="91" y="158" class="btn" style="fill:#ffffff">Save changes</text>
+  <text x="60" y="116" class="step">Idle</text>
+  <rect x="60" y="130" width="140" height="38" rx="19" fill="#262626"/>
+  <text x="86" y="154" class="btn" style="fill:#ffffff">Save changes</text>
 
-  <g fill="none" stroke="#a3a3a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M226 153h50M268 145l8 8-8 8"/>
+  <g fill="none" stroke="#737373" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M214 149h48M256 143l6 6-6 6"/>
   </g>
 
-  <!-- pending -->
-  <text x="296" y="118" class="step">PENDING</text>
-  <rect x="296" y="132" width="150" height="42" rx="12" fill="#2563eb" opacity="0.55"/>
-  <circle cx="324" cy="153" r="7" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="30 14"/>
-  <text x="342" y="158" class="btn" style="fill:#ffffff">Saving</text>
-  <text x="296" y="200" class="body">Active verb. Only this</text>
-  <text x="296" y="220" class="body">action is disabled.</text>
+  <text x="280" y="116" class="step">Pending</text>
+  <rect x="280" y="130" width="140" height="38" rx="19" fill="#525252"/>
+  <circle cx="306" cy="149" r="6" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="26 12"/>
+  <text x="322" y="154" class="btn" style="fill:#ffffff">Saving</text>
+  <text x="280" y="196" class="body">Active verb. Only this</text>
+  <text x="280" y="214" class="body">action is disabled.</text>
 
-  <g fill="none" stroke="#a3a3a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M462 153c40 0 40-40 80-40h22M556 105l8 8-8 8"/>
-    <path d="M462 153c40 0 40 70 80 70h22M556 215l8 8-8 8"/>
+  <g fill="none" stroke="#737373" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M434 149c40 0 40-38 78-38h22M528 105l6 6-6 6"/>
+    <path d="M434 149c40 0 40 70 78 70h22M528 213l6 6-6 6"/>
   </g>
 
-  <!-- success -->
-  <rect x="584" y="88" width="300" height="50" rx="12" fill="#ffffff" stroke="#bbf7d0"/>
-  <circle cx="610" cy="113" r="9" fill="#16a34a"/>
-  <path d="M605 113l3.5 3.5 6.5-7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="630" y="118" class="toast">Changes saved</text>
-  <text x="904" y="110" class="body">Confirms the outcome,</text>
-  <text x="904" y="130" class="body">then disappears.</text>
+  <rect x="554" y="88" width="290" height="46" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
+  <circle cx="578" cy="111" r="4.5" fill="#16a34a"/>
+  <text x="594" y="116" class="toast">Changes saved</text>
+  <text x="868" y="108" class="body">Confirms the outcome,</text>
+  <text x="868" y="126" class="body">then disappears.</text>
 
-  <!-- failure -->
-  <rect x="584" y="198" width="300" height="50" rx="12" fill="#ffffff" stroke="#fecaca"/>
-  <circle cx="610" cy="223" r="9" fill="#dc2626"/>
-  <path d="M610 218v6M610 228v0.5" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-  <text x="630" y="228" class="toast">Changes could not be saved.</text>
-  <text x="904" y="220" class="body">Says what failed, offers</text>
-  <text x="904" y="240" class="body">Try again, stays until closed.</text>
+  <rect x="554" y="196" width="290" height="46" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
+  <circle cx="578" cy="219" r="4.5" fill="#dc2626"/>
+  <text x="594" y="224" class="toast">Changes could not be saved.</text>
+  <text x="868" y="216" class="body">Says what failed, offers</text>
+  <text x="868" y="234" class="body">Try again, stays until closed.</text>
 
-  <line x1="60" y1="296" x2="1140" y2="296" stroke="#e5e5e5"/>
-  <text x="60" y="340" class="kicker">A COLLECTION</text>
+  <line x1="60" y1="292" x2="1140" y2="292" stroke="#e5e5e5"/>
+  <text x="60" y="336" class="kicker">A collection</text>
 
-  <!-- loading -->
-  <text x="60" y="390" class="step">LOADING</text>
-  <rect x="60" y="404" width="240" height="160" rx="14" fill="#ffffff" stroke="#e5e5e5"/>
-  <rect x="80" y="426" width="150" height="12" rx="6" fill="#f0f0f0"/>
-  <rect x="80" y="458" width="200" height="12" rx="6" fill="#f0f0f0"/>
-  <rect x="80" y="490" width="170" height="12" rx="6" fill="#f0f0f0"/>
-  <rect x="80" y="522" width="120" height="12" rx="6" fill="#f0f0f0"/>
-  <text x="60" y="592" class="body">Placeholder rows keep</text>
-  <text x="60" y="612" class="body">the layout steady.</text>
+  <text x="60" y="384" class="step">Loading</text>
+  <rect x="60" y="398" width="240" height="156" rx="12" fill="#ffffff" stroke="#d4d4d4"/>
+  <rect x="80" y="420" width="140" height="10" rx="5" fill="#f5f5f5"/>
+  <rect x="80" y="450" width="190" height="10" rx="5" fill="#f5f5f5"/>
+  <rect x="80" y="480" width="160" height="10" rx="5" fill="#f5f5f5"/>
+  <rect x="80" y="510" width="110" height="10" rx="5" fill="#f5f5f5"/>
+  <text x="60" y="584" class="body">Placeholder rows keep</text>
+  <text x="60" y="602" class="body">the layout steady.</text>
 
-  <!-- empty -->
-  <text x="330" y="390" class="step">EMPTY</text>
-  <rect x="330" y="404" width="240" height="160" rx="14" fill="#ffffff" stroke="#e5e5e5"/>
-  <text x="352" y="462" class="toast" style="font-size:14px">No records match</text>
-  <text x="352" y="482" class="toast" style="font-size:14px">these filters</text>
-  <rect x="352" y="502" width="112" height="34" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
-  <text x="368" y="524" class="btn" style="font-size:13px">Clear filters</text>
-  <text x="330" y="592" class="body">Names the cause and</text>
-  <text x="330" y="612" class="body">offers the next step.</text>
+  <text x="330" y="384" class="step">Empty</text>
+  <rect x="330" y="398" width="240" height="156" rx="12" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="352" y="454" class="toast">No records match</text>
+  <text x="352" y="472" class="toast">these filters</text>
+  <rect x="352" y="490" width="104" height="32" rx="16" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="368" y="511" class="btn" style="font-size:12px">Clear filters</text>
+  <text x="330" y="584" class="body">Names the cause and</text>
+  <text x="330" y="602" class="body">offers the next step.</text>
 
-  <!-- error -->
-  <text x="600" y="390" class="step">ERROR</text>
-  <rect x="600" y="404" width="240" height="160" rx="14" fill="#ffffff" stroke="#e5e5e5"/>
-  <text x="622" y="470" class="toast">Summary unavailable</text>
-  <rect x="622" y="492" width="100" height="34" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
-  <text x="640" y="514" class="btn" style="font-size:13px">Try again</text>
-  <text x="600" y="592" class="body">Never shows an empty</text>
-  <text x="600" y="612" class="body">list when a load failed.</text>
+  <text x="600" y="384" class="step">Error</text>
+  <rect x="600" y="398" width="240" height="156" rx="12" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="622" y="462" class="toast">Summary unavailable</text>
+  <rect x="622" y="482" width="92" height="32" rx="16" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="640" y="503" class="btn" style="font-size:12px">Try again</text>
+  <text x="600" y="584" class="body">Never shows an empty</text>
+  <text x="600" y="602" class="body">list when a load failed.</text>
 
-  <!-- unknown value -->
-  <text x="870" y="390" class="step">UNKNOWN VALUE</text>
-  <rect x="870" y="404" width="270" height="160" rx="14" fill="#ffffff" stroke="#e5e5e5"/>
-  <text x="892" y="440" class="body">Open requests</text>
-  <text x="892" y="490" class="big">–</text>
-  <text x="1000" y="440" class="body">not</text>
-  <text x="1000" y="490" class="big" style="fill:#d4d4d4;text-decoration:line-through">0</text>
-  <text x="870" y="592" class="body">A dash for unknown. Zero would</text>
-  <text x="870" y="612" class="body">state a fact that may be false.</text>
+  <text x="870" y="384" class="step">Unknown value</text>
+  <rect x="870" y="398" width="270" height="156" rx="12" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="892" y="434" class="body">Open requests</text>
+  <text x="892" y="484" class="big">–</text>
+  <text x="1000" y="434" class="body">not</text>
+  <text x="1000" y="484" class="big" style="fill:#e5e5e5;text-decoration:line-through">0</text>
+  <text x="870" y="584" class="body">A dash for unknown. Zero would</text>
+  <text x="870" y="602" class="body">state a fact that may be false.</text>
 </svg>

@@ -2,72 +2,71 @@
   <title id="t">What a brand preset may change</title>
   <desc id="d">A preset changes the primary colour and the corner radius. Status colours and chart colours stay the same in every preset, so meaning never changes with the brand.</desc>
   <style>
-    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #171717; }
-    .kicker { font-size: 13px; font-weight: 600; letter-spacing: 2.4px; }
-    .title { font-size: 24px; font-weight: 600; }
-    .body { font-size: 15px; fill: #525252; }
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #262626; }
+    .kicker { font-size: 14px; font-weight: 600;  fill: #0369a1; }
+    .title { font-size: 21px; font-weight: 600; fill: #171717; }
+    .body { font-size: 14px; fill: #404040; }
     .label { font-size: 13px; font-weight: 500; fill: #525252; }
-    .btn { font-size: 14px; font-weight: 500; }
+    .btn { font-size: 13px; font-weight: 500; fill: #404040; }
   </style>
   <rect width="1200" height="675" fill="#ffffff"/>
 
-  <!-- left: changes -->
-  <rect x="40" y="40" width="545" height="595" rx="22" fill="#f0f9ff" stroke="#bae6fd"/>
-  <text x="76" y="92" class="kicker" style="fill:#0369a1">CHANGES WITH THE PRESET</text>
-  <text x="76" y="132" class="title">Brand: primary and shape</text>
-  <text x="76" y="160" class="body">An organization picks the look of its workspace.</text>
+  <!-- left -->
+  <rect x="40" y="40" width="545" height="595" rx="16" fill="#fafafa" stroke="#d4d4d4"/>
+  <text x="76" y="90" class="kicker">Changes with the preset</text>
+  <text x="76" y="128" class="title">Brand: primary and shape</text>
+  <text x="76" y="154" class="body">An organization picks the look of its workspace.</text>
 
+  <text x="76" y="212" class="label">Primary colour</text>
   <g>
-    <text x="76" y="214" class="label">Default</text>
-    <rect x="76" y="226" width="140" height="40" rx="12" fill="#2563eb"/><text x="104" y="251" class="btn" style="fill:#ffffff">Save changes</text>
-    <text x="256" y="214" class="label">Emerald</text>
-    <rect x="256" y="226" width="140" height="40" rx="9" fill="#047857"/><text x="284" y="251" class="btn" style="fill:#ffffff">Save changes</text>
-
-    <text x="76" y="314" class="label">Violet</text>
-    <rect x="76" y="326" width="140" height="40" rx="9" fill="#7c3aed"/><text x="104" y="351" class="btn" style="fill:#ffffff">Save changes</text>
-    <text x="256" y="314" class="label">Orange, square corners</text>
-    <rect x="256" y="326" width="140" height="40" rx="0" fill="#c2410c"/><text x="284" y="351" class="btn" style="fill:#ffffff">Save changes</text>
-
-    <text x="76" y="414" class="label">Bright primary, dark text for contrast</text>
-    <rect x="76" y="426" width="140" height="40" rx="9" fill="#a3e635"/><text x="104" y="451" class="btn" style="fill:#1a2e05">Save changes</text>
-  </g>
-  <text x="76" y="530" class="body">Every light value has a matching dark value,</text>
-  <text x="76" y="554" class="body">and button text keeps its contrast on bright</text>
-  <text x="76" y="578" class="body">primaries.</text>
-
-  <!-- right: fixed -->
-  <rect x="615" y="40" width="545" height="595" rx="22" fill="#fafafa" stroke="#e5e5e5"/>
-  <text x="651" y="92" class="kicker" style="fill:#6d28d9">NEVER CHANGES</text>
-  <text x="651" y="132" class="title">Meaning: status and data</text>
-  <text x="651" y="160" class="body">The same in every preset, light and dark.</text>
-
-  <text x="651" y="214" class="label">Status</text>
-  <g>
-    <rect x="651" y="226" width="112" height="32" rx="16" fill="#dcfce7"/><circle cx="669" cy="242" r="4.5" fill="#16a34a"/><text x="681" y="247" class="btn" style="fill:#166534;font-size:13px">Approved</text>
-    <rect x="773" y="226" width="134" height="32" rx="16" fill="#fef3c7"/><circle cx="791" cy="242" r="4.5" fill="#d97706"/><text x="803" y="247" class="btn" style="fill:#92400e;font-size:13px">Review needed</text>
-    <rect x="917" y="226" width="114" height="32" rx="16" fill="#dbeafe"/><circle cx="935" cy="242" r="4.5" fill="#2563eb"/><text x="947" y="247" class="btn" style="fill:#1e40af;font-size:13px">In progress</text>
-    <rect x="651" y="268" width="96" height="32" rx="16" fill="#fee2e2"/><circle cx="669" cy="284" r="4.5" fill="#dc2626"/><text x="681" y="289" class="btn" style="fill:#991b1b;font-size:13px">Overdue</text>
+    <circle cx="92" cy="246" r="14" fill="#2563eb"/>
+    <circle cx="130" cy="246" r="14" fill="#059669"/>
+    <circle cx="168" cy="246" r="14" fill="#7c3aed"/>
+    <circle cx="206" cy="246" r="14" fill="#ea580c"/>
+    <circle cx="244" cy="246" r="14" fill="#65a30d"/>
+    <circle cx="282" cy="246" r="14" fill="#3f3f46"/>
   </g>
 
-  <text x="651" y="350" class="label">Charts</text>
+  <text x="76" y="320" class="label">Corner radius</text>
   <g>
-    <rect x="651" y="362" width="44" height="44" rx="10" fill="#2563eb"/>
-    <rect x="703" y="362" width="44" height="44" rx="10" fill="#7c3aed"/>
-    <rect x="755" y="362" width="44" height="44" rx="10" fill="#16a34a"/>
-    <rect x="807" y="362" width="44" height="44" rx="10" fill="#d97706"/>
-    <rect x="859" y="362" width="44" height="44" rx="10" fill="#0891b2"/>
-    <rect x="911" y="362" width="44" height="44" rx="10" fill="#e11d48"/>
+    <rect x="76" y="334" width="128" height="36" rx="12" fill="#ffffff" stroke="#d4d4d4"/><text x="100" y="357" class="btn">Save changes</text>
+    <rect x="220" y="334" width="128" height="36" rx="6" fill="#ffffff" stroke="#d4d4d4"/><text x="244" y="357" class="btn">Save changes</text>
+    <rect x="364" y="334" width="128" height="36" rx="0" fill="#ffffff" stroke="#d4d4d4"/><text x="388" y="357" class="btn">Save changes</text>
   </g>
+
+  <text x="76" y="430" class="label">Readable text on any primary</text>
   <g>
-    <rect x="651" y="430" width="300" height="72" rx="12" fill="#ffffff" stroke="#e5e5e5"/>
-    <rect x="671" y="478" width="28" height="12" rx="2" fill="#2563eb"/>
-    <rect x="707" y="462" width="28" height="28" rx="2" fill="#2563eb"/>
-    <rect x="743" y="450" width="28" height="40" rx="2" fill="#7c3aed"/>
-    <rect x="779" y="470" width="28" height="20" rx="2" fill="#16a34a"/>
-    <rect x="815" y="456" width="28" height="34" rx="2" fill="#d97706"/>
-    <rect x="851" y="466" width="28" height="24" rx="2" fill="#0891b2"/>
-    <rect x="887" y="458" width="28" height="32" rx="2" fill="#e11d48"/>
+    <rect x="76" y="444" width="128" height="36" rx="10" fill="#2563eb"/><text x="100" y="467" class="btn" style="fill:#ffffff">Save changes</text>
+    <rect x="220" y="444" width="128" height="36" rx="10" fill="#a3e635"/><text x="244" y="467" class="btn" style="fill:#1a2e05">Save changes</text>
   </g>
-  <text x="651" y="554" class="body">A green "Approved" means the same thing in</text>
-  <text x="651" y="578" class="body">every organization, whatever its brand colour.</text>
+  <text x="76" y="548" class="body">Every light value has a matching dark value, and</text>
+  <text x="76" y="570" class="body">button text keeps its contrast on bright primaries.</text>
+
+  <!-- right -->
+  <rect x="615" y="40" width="545" height="595" rx="16" fill="#ffffff" stroke="#d4d4d4"/>
+  <text x="651" y="90" class="kicker">Never changes</text>
+  <text x="651" y="128" class="title">Meaning: status and data</text>
+  <text x="651" y="154" class="body">The same in every preset, light and dark.</text>
+
+  <text x="651" y="212" class="label">Status</text>
+  <g>
+    <rect x="651" y="226" width="106" height="28" rx="14" fill="#f0fdf4" stroke="#dcfce7"/><circle cx="667" cy="240" r="3.5" fill="#16a34a"/><text x="678" y="245" class="btn" style="fill:#3f6212;font-size:12px">Approved</text>
+    <rect x="765" y="226" width="126" height="28" rx="14" fill="#fffbeb" stroke="#fef3c7"/><circle cx="781" cy="240" r="3.5" fill="#d97706"/><text x="792" y="245" class="btn" style="fill:#854d0e;font-size:12px">Review needed</text>
+    <rect x="899" y="226" width="110" height="28" rx="14" fill="#eff6ff" stroke="#dbeafe"/><circle cx="915" cy="240" r="3.5" fill="#2563eb"/><text x="926" y="245" class="btn" style="fill:#1e3a8a;font-size:12px">In progress</text>
+    <rect x="651" y="264" width="92" height="28" rx="14" fill="#fef2f2" stroke="#fee2e2"/><circle cx="667" cy="278" r="3.5" fill="#dc2626"/><text x="678" y="283" class="btn" style="fill:#7f1d1d;font-size:12px">Overdue</text>
+  </g>
+
+  <text x="651" y="342" class="label">Charts</text>
+  <g>
+    <rect x="651" y="356" width="300" height="120" rx="10" fill="#ffffff" stroke="#d4d4d4"/>
+    <line x1="671" y1="456" x2="931" y2="456" stroke="#e5e5e5"/>
+    <rect x="683" y="430" width="22" height="26" rx="3" fill="#3b82f6"/>
+    <rect x="719" y="410" width="22" height="46" rx="3" fill="#8b5cf6"/>
+    <rect x="755" y="420" width="22" height="36" rx="3" fill="#22c55e"/>
+    <rect x="791" y="396" width="22" height="60" rx="3" fill="#f59e0b"/>
+    <rect x="827" y="416" width="22" height="40" rx="3" fill="#06b6d4"/>
+    <rect x="863" y="404" width="22" height="52" rx="3" fill="#f43f5e"/>
+  </g>
+  <text x="651" y="548" class="body">A green "Approved" means the same thing in</text>
+  <text x="651" y="570" class="body">every organization, whatever its brand colour.</text>
 </svg>
