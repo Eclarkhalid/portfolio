@@ -2,6 +2,7 @@
 
 import { startTransition, useActionState, useEffect, useRef } from "react";
 import { sendMessage, type ContactState } from "@/app/contact/actions";
+import { CONTACT_DRAFT_KEY } from "@/lib/ai/events";
 
 export function ContactForm() {
   const startedAtRef = useRef<HTMLInputElement>(null);
@@ -10,9 +11,22 @@ export function ContactForm() {
     null
   );
 
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
   useEffect(() => {
     if (startedAtRef.current) {
       startedAtRef.current.value = String(Date.now());
+    }
+    // Prefill a message Lumen drafted; the visitor reviews it before sending
+    try {
+      const draft = sessionStorage.getItem(CONTACT_DRAFT_KEY);
+      if (draft && messageRef.current && !messageRef.current.value) {
+        messageRef.current.value = draft;
+        messageRef.current.focus();
+      }
+      sessionStorage.removeItem(CONTACT_DRAFT_KEY);
+    } catch {
+      // Storage unavailable: nothing to prefill
     }
   }, []);
 
@@ -88,6 +102,7 @@ export function ContactForm() {
           Message
         </label>
         <textarea
+          ref={messageRef}
           id="message"
           name="message"
           required

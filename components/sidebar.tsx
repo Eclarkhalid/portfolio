@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import { BrandIcon } from "@/components/brand-icon";
+import { LumenMark } from "@/components/lumen/lumen-mark";
+import { useLumen } from "@/components/lumen/lumen-provider";
 import { navlinks, socials } from "@/lib/nav";
 import { profile } from "@/content/profile";
 
@@ -14,6 +16,7 @@ const focusableSelector =
 
 export function Sidebar() {
   const [open, setOpen] = useState(false);
+  const lumen = useLumen();
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -113,6 +116,35 @@ export function Sidebar() {
             </nav>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            setOpen(false);
+            lumen.toggle();
+          }}
+          aria-expanded={lumen.open}
+          aria-controls="lumen-panel"
+          className={twMerge(
+            "mb-6 flex w-full items-center justify-between rounded-full border px-3.5 py-2.5 text-[13px] font-semibold transition",
+            lumen.open
+              ? "border-neutral-900 bg-neutral-900 text-white"
+              : "border-violet-200 bg-violet-50 text-violet-800 hover:border-violet-300"
+          )}
+        >
+          <span className="inline-flex items-center gap-2">
+            <LumenMark className="h-4 w-4" />
+            Ask Lumen
+          </span>
+          <kbd
+            className={twMerge(
+              "hidden rounded-md border px-1.5 py-0.5 font-sans text-[10px] font-semibold lg:inline",
+              lumen.open ? "border-neutral-600 text-neutral-300" : "border-violet-200 text-violet-700"
+            )}
+          >
+            Ctrl K
+          </kbd>
+        </button>
 
         <div className="border-t border-neutral-300 pt-5">
           <div className="flex items-center gap-1">

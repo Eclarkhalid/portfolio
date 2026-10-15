@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
   // Regular builds keep the default output used by Vercel and local verification.
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
 
+  // Lumen's chat route reads content/ (including content/lumen.md) at runtime.
+  outputFileTracingIncludes: {
+    "/api/chat": ["./content/**/*"],
+  },
+
   async headers() {
     if (process.env.NODE_ENV !== "production") return [];
     return [{ source: "/(.*)", headers: securityHeaders }];

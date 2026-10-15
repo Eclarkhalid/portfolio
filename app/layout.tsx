@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@fontsource-variable/inter";
 import "./globals.css";
+import { LumenProvider, LumenSlot } from "@/components/lumen/lumen-provider";
 import { Sidebar } from "@/components/sidebar";
 import { profile } from "@/content/profile";
 import { JsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -56,14 +57,20 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <div className="flex h-dvh overflow-hidden bg-gray-100">
-          <Sidebar />
-          <div className="lg:p-2 flex-1 overflow-y-auto">
-            <div className="bg-white min-h-full lg:rounded-xl border border-transparent lg:border-neutral-200">
-              {children}
+        <LumenProvider>
+          <div className="flex h-dvh overflow-hidden bg-gray-100">
+            <Sidebar />
+            {/* Page card, plus Lumen's panel as a column on the right when open */}
+            <div className="flex min-w-0 flex-1 lg:gap-2 lg:p-2">
+              <div className="min-w-0 flex-1 overflow-y-auto lg:rounded-xl">
+                <div className="bg-white min-h-full lg:rounded-xl border border-transparent lg:border-neutral-200">
+                  {children}
+                </div>
+              </div>
+              <LumenSlot />
             </div>
           </div>
-        </div>
+        </LumenProvider>
       </body>
     </html>
   );

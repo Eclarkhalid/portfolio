@@ -22,8 +22,8 @@ Product story of record: **SpyGlow and Ryterr are active products. Shotsfolio is
 
 ## Non-negotiable constraints
 
-1. **Static-first.** Every page is statically rendered. Pages declare `export const dynamic = "error"` so accidental dynamic rendering fails the build. The ONLY server-side execution is the contact form's server action (`app/contact/actions.ts`) and the Keystatic admin API route (dev-only, 404s in production). Do not add other API routes, databases, runtime CMS clients, or runtime data fetching. If a feature seems to need them, it belongs somewhere else or the design is wrong.
-2. **Minimal client JavaScript.** Server Components by default. Current client components: `components/sidebar.tsx` (mobile nav state) and `components/contact-form.tsx` (useActionState). Adding a `"use client"` file requires justification in the PR/commit message. No animation libraries (no framer-motion) — use CSS transitions.
+1. **Static-first.** Every page is statically rendered. Pages declare `export const dynamic = "error"` so accidental dynamic rendering fails the build. The ONLY server-side execution is the contact form's server action (`app/contact/actions.ts`), Lumen's chat route (`app/api/chat/route.ts`, approved by the owner; see "Lumen" below) and the Keystatic admin API route (dev-only, 404s in production). Do not add other API routes, databases, runtime CMS clients, or runtime data fetching. If a feature seems to need them, it belongs somewhere else or the design is wrong.
+2. **Minimal client JavaScript.** Server Components by default. Current client components: `components/sidebar.tsx` (mobile nav state), `components/contact-form.tsx` (useActionState), `components/lumen/lumen-provider.tsx` (panel open state, Ctrl/Cmd+K) and `components/lumen/lumen-panel.tsx` (the chat UI, loaded with `next/dynamic` only when the panel first opens, so pages ship no chat code). Adding a `"use client"` file requires justification in the PR/commit message. No animation libraries (no framer-motion) — use CSS transitions.
 3. **Performance budget:** LCP < 2.5s, INP < 200ms, CLS < 0.1, Lighthouse ≥ 95 (performance, accessibility, SEO, best practices) on every important page. Practical implications: no third-party scripts, self-hosted fonts only (`@fontsource-variable/inter` — never reintroduce `next/font/google`, builds must not depend on network), `next/image` with explicit dimensions everywhere.
 4. **SEO invariants.** Every page has a unique title + description and a canonical URL. Articles get Article + BreadcrumbList JSON-LD, generated OG image, RSS entry, sitemap entry — this is automatic if content follows the schema; do not bypass the content layer. Redirects from old-site URLs live in `next.config.ts` and must not be removed.
 5. **No secrets in the repo.** Env vars documented in `.env.example` only. (Historical note: the old `masterhub-api` repo leaked a `.env`; that mistake does not get repeated here.)
@@ -94,7 +94,17 @@ A change that renders but fails any gate is not done. There are no tests beyond 
 
 Primary: Vercel (auto-deploy from GitHub, previews per PR). Portable by design: for VPS, uncomment `output: "standalone"` in `next.config.ts`, build, run behind Nginx. Nothing in this codebase may assume Vercel-only APIs.
 
-Env (see `.env.example`): `RESEND_API_KEY`, `CONTACT_FROM` — contact form degrades gracefully (shows direct email) when unset, so previews/forks work without secrets.
+Env (see `.env.example`): `RESEND_API_KEY`, `CONTACT_FROM` — contact form degrades gracefully (shows direct email) when unset, so previews/forks work without secrets. `ANTHROPIC_API_KEY`, `AI_DAILY_BUDGET_USD` — Lumen shows the contact fallback when the key is unset.
+
+## Lumen (the AI guide)
+
+Lumen is the site's AI guide: a panel opened from "Ask Lumen" in the sidebar (or Ctrl/Cmd+K) that sits as a column beside the page on desktop and a full-screen sheet on phones. Two modes: **About Eclar** (answers only from site content) and **Ask anything** (general software, AI and product questions, limited per hour).
+
+- **Route:** `app/api/chat/route.ts` streams server-sent events (`lib/ai/events.ts`). Model `claude-sonnet-5-5` at `effort: "low"`, server-side refusal fallback on, `max_tokens` 2048, at most 3 tool rounds. Rejects cross-origin requests.
+- **Knowledge:** `lib/ai/knowledge.ts` builds one deterministic document from `content/` (profile, experience, products, projects, case studies, articles) plus `content/lumen.md` (the owner's own words and the rules Lumen follows). It sits in the prompt-cached system prefix (1h TTL): never put timestamps or per-request data in it. Mode and current page go in a second, uncached system block.
+- **Tools** (strict schemas, validated again on the server): `show_pages` (its `paths` enum is the real page index, so links can't point to missing pages) and `draft_contact` (prefills the contact form through sessionStorage; the visitor reviews and sends).
+- **Guardrails:** `lib/ai/limits.ts` holds per-visitor limits (20 messages and 5 general questions an hour) and the daily spend cap, in memory (the VPS runs one process).
+- **Changing what Lumen knows:** edit `content/` as usual, or `content/lumen.md` for answers in the owner's voice. Changes take effect on the next deploy.
 
 ## Reference material — old portfolio (read-only)
 
