@@ -7,7 +7,8 @@ export type Project = {
   name: string;
   description: string;
   url: string;
-  /** Square icon in public/, shown at 56px */
+  /** Square icon under public/images/ (not public/projects/, which the old-site
+   *  /projects/:id redirect would catch), shown at 56px */
   mark: { src: string; alt: string };
   tint: string;
   stack: string[];
@@ -21,7 +22,7 @@ export const projects: Project[] = [
     description:
       "A private photo archive for my own memories: upload from the camera roll and keep every photo at its original quality.",
     url: "https://kive.eclarkhalid.com",
-    mark: { src: "/projects/kive-mark.png", alt: "Kive" },
+    mark: { src: "/images/projects/kive-mark.png", alt: "Kive" },
     tint: "bg-neutral-900",
     stack: ["Next.js", "TypeScript", "MongoDB", "Clerk", "UploadThing", "Tailwind CSS"],
     highlights: [
