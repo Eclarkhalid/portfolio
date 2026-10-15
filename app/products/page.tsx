@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
+import { AppLogo } from "@/components/app-logo";
 import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { getActiveProducts, getPreviousProducts } from "@/lib/content";
 import { JsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
 import { pageMetadata } from "@/lib/metadata";
-import { productVisuals } from "@/lib/product-visuals";
 
 export const dynamic = "error";
 
@@ -43,7 +42,6 @@ export default function ProductsPage() {
 
       <section className="mt-20 border-t border-neutral-200">
         {active.map((product, index) => {
-          const visual = productVisuals[product.slug];
           return (
             <article
               key={product.slug}
@@ -52,13 +50,7 @@ export default function ProductsPage() {
               <span className="text-xs tabular-nums text-neutral-500">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <div className={`flex h-20 w-20 items-center justify-center rounded-2xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}>
-                {visual ? (
-                  <Image src={visual.mark} alt={visual.markAlt} width={visual.width} height={visual.height} className="object-contain" />
-                ) : (
-                  <span className="text-lg font-semibold text-neutral-600">{product.meta.title.slice(0, 1)}</span>
-                )}
-              </div>
+              <AppLogo slug={product.slug} name={product.meta.title} size={80} />
               <div>
                 <div className="flex flex-wrap items-center gap-3">
                   <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
@@ -93,8 +85,8 @@ export default function ProductsPage() {
           <SectionIndex number="02" title="Previous products" />
           <div className="mt-5 border-t border-neutral-200">
             {previous.map((product) => (
-              <article key={product.slug} className="grid gap-5 border-b border-neutral-200 py-7 md:grid-cols-[3rem_minmax(0,1fr)_auto] md:items-center">
-                <span className="text-xs text-neutral-500">01</span>
+              <article key={product.slug} className="grid gap-5 border-b border-neutral-200 py-7 md:grid-cols-[3.5rem_minmax(0,1fr)_auto] md:items-center">
+                <AppLogo slug={product.slug} name={product.meta.title} size={56} className="opacity-80 grayscale" />
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="text-xl font-semibold text-neutral-900">{product.meta.title}</h3>

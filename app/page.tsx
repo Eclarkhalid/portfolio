@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { AppLogo } from "@/components/app-logo";
 import { Container } from "@/components/base";
 import { profile } from "@/content/profile";
 import { getActiveProducts, getArticles, getCaseStudies } from "@/lib/content";
-import { productVisuals } from "@/lib/product-visuals";
 
 export const dynamic = "error";
 
@@ -90,7 +90,6 @@ export default function HomePage() {
         <ChapterHeading number="01">Selected products</ChapterHeading>
         <div>
           {products.map((product, index) => {
-            const visual = productVisuals[product.slug];
             return (
               <article
                 key={product.slug}
@@ -99,23 +98,7 @@ export default function HomePage() {
                 <span className="text-xs tabular-nums text-neutral-400">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <div
-                  className={`flex h-20 w-20 items-center justify-center rounded-2xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}
-                >
-                  {visual ? (
-                    <Image
-                      src={visual.mark}
-                      alt={visual.markAlt}
-                      width={visual.width}
-                      height={visual.height}
-                      className="object-contain"
-                    />
-                  ) : (
-                    <span className="text-lg font-semibold text-neutral-500">
-                      {product.meta.title.slice(0, 1)}
-                    </span>
-                  )}
-                </div>
+                <AppLogo slug={product.slug} name={product.meta.title} size={80} />
                 <div>
                   <h3 className="text-xl font-semibold tracking-tight text-neutral-900 md:text-2xl">
                     {product.meta.title}

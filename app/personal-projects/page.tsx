@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { AppLogo } from "@/components/app-logo";
 import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { TechStack } from "@/components/tech-stack";
 import { projects } from "@/content/projects";
@@ -47,11 +47,7 @@ export default function PersonalProjectsPage() {
             </span>
             <div>
               <div className="flex items-center gap-4">
-                <div
-                  className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-neutral-200 ${project.tint}`}
-                >
-                  <Image src={project.mark.src} alt={project.mark.alt} width={56} height={56} />
-                </div>
+                <AppLogo slug={project.slug} name={project.name} size={56} />
                 <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
                   {project.name}
                 </h2>

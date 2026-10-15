@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { AppLogo } from "@/components/app-logo";
 import { AccentBar, Container, SectionIndex } from "@/components/base";
 import { Mdx } from "@/components/mdx";
 import { TechStack } from "@/components/tech-stack";
 import { getProduct, getProducts } from "@/lib/content";
 import { JsonLd, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
 import { pageMetadata } from "@/lib/metadata";
-import { productVisuals } from "@/lib/product-visuals";
 
 export const dynamic = "error";
 export const dynamicParams = false;
@@ -31,7 +30,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
 
   const sunsetted = product.meta.status === "sunsetted";
-  const visual = productVisuals[slug];
 
   return (
     <Container className="max-w-7xl">
@@ -46,13 +44,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <article className="mt-10">
         <header className="grid gap-8 border-b border-neutral-200 pb-12 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-10">
-          <div className={`flex h-24 w-24 items-center justify-center rounded-3xl border border-neutral-200 ${visual?.tint ?? "bg-neutral-50"}`}>
-            {visual ? (
-              <Image src={visual.mark} alt={visual.markAlt} width={visual.detailWidth} height={visual.detailHeight} className="object-contain" preload />
-            ) : (
-              <span className="text-2xl font-semibold text-neutral-600">{product.meta.title.slice(0, 1)}</span>
-            )}
-          </div>
+          <AppLogo slug={slug} name={product.meta.title} size={96} preload />
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">Product story</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
