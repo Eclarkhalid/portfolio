@@ -3,6 +3,7 @@ import path from "node:path";
 import { experience } from "@/content/experience";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
+import { testimonials } from "@/content/testimonials";
 import { getArticles, getCaseStudies, getProducts } from "@/lib/content";
 
 /**
@@ -155,6 +156,16 @@ export function getKnowledge(): string {
         [`### ${article.meta.title} /writing/${article.slug}`, article.meta.description, article.body.trim()].join("\n")
       ),
     ].join("\n\n")
+  );
+
+  sections.push(
+    [
+      "## Client testimonials",
+      `Real reviews from his Fiverr clients (${profile.links.fiverr}). Quote them word for word with the username and country, never paraphrase them as quotes, and never invent others.`,
+      ...testimonials.map(
+        (item) => `- "${item.quote}" (${item.author}, ${item.country}${item.note ? `, ${item.note.toLowerCase()}` : ""})`
+      ),
+    ].join("\n")
   );
 
   const ownWords = readOwnWords();

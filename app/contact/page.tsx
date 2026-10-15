@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { ContactForm } from "@/components/contact-form";
+import { TestimonialsList } from "@/components/testimonials";
 import { profile } from "@/content/profile";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { socials } from "@/lib/nav";
@@ -43,6 +44,16 @@ export default function ContactPage() {
         <div className="rounded-2xl border border-violet-100 bg-gradient-to-br from-sky-50/70 via-white to-violet-50/70 p-6 md:p-8">
           <ContactForm />
         </div>
+      </section>
+
+      <section className="grid gap-8 border-t border-neutral-200 py-10 md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] md:gap-20">
+        <div>
+          <SectionIndex number="02" title="What clients say" />
+          <p className="mt-6 max-w-sm text-sm leading-7 text-neutral-700">
+            Reviews from clients I have worked with through Fiverr, quoted as they wrote them.
+          </p>
+        </div>
+        <TestimonialsList />
       </section>
     </Container>
   );

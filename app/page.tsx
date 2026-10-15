@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { AppLogo } from "@/components/app-logo";
 import { Container } from "@/components/base";
+import { TestimonialsGrid } from "@/components/testimonials";
 import { profile } from "@/content/profile";
 import { getActiveProducts, getArticles, getCaseStudies } from "@/lib/content";
 
@@ -198,6 +199,11 @@ export default function HomePage() {
             Browse all writing
           </Link>
         </div>
+      </section>
+
+      <section className="mt-24 md:mt-32">
+        <ChapterHeading number="04">What clients say</ChapterHeading>
+        <TestimonialsGrid />
       </section>
 
       <section className="mt-28 border-t border-neutral-200 py-12 md:mt-36">
