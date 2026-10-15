@@ -14,7 +14,9 @@ The site presents Khalid as a **senior engineer, technical leader and founder** 
 
 Product story of record: **SpyGlow and Ryterr are active products. Shotsfolio is sunsetted** and may only ever appear under "Previous products" (driven by `status: sunsetted` in its MDX frontmatter). Never list Shotsfolio as active.
 
-**Copy style rule:** no em dashes anywhere in user-facing copy (owner preference). Use commas, colons, periods or parentheses instead. Date ranges use "to" (e.g. "2024 to Present").
+**Copy style rule:** no em dashes anywhere in user-facing copy (owner preference). Use commas, colons, periods or parentheses instead. Date ranges use "to" (e.g. "2024 to Present"). No litotes or irony either (owner preference): state things directly ("small", not "not dramatic"; "noise moves review cost to the user", not "more alerts can look like more value in a demo"). Plain contrasts ("X, not Y") are fine.
+
+**Logos:** product and project app icons live in `public/images/logos/<slug>.png` and come from each site's own apple-touch-icon via `npm run logos:refresh` (run by hand, commit the results; builds never fetch). `components/app-logo.tsx` picks them up by slug. Don't put assets under `public/projects/`: the old-site `/projects/:id` redirect catches those paths.
 
 **Color language:** subtle accents only, never dramatic. The palette is a sky-to-violet gradient accent (`AccentBar` under page headings), soft tinted cards (sky-50/violet-50), colored tag pills (`lib/pills.ts`), brand-colored tech logos (`components/tech-stack.tsx`, simple-icons, server-rendered SVG), and sky hover states. Base stays the light neutral shell.
 

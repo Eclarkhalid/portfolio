@@ -2,6 +2,7 @@
 title: "Content pipelines need receipts, not just drafts"
 description: A useful AI publishing system preserves research, claim review and delivery evidence instead of returning an isolated block of prose.
 published: 2026-07-20
+updated: 2026-10-15
 tags: [AI systems, content engineering, product architecture]
 draft: false
 related: [deterministic-before-ai, static-first-professional-sites]
@@ -38,7 +39,7 @@ important for engineering. They make failures local and observable.
 
 ## Stages create better failure boundaries
 
-A pipeline should not pretend that every failure is a generation failure.
+A pipeline should report each failure at the stage where it happened.
 Research can be incomplete while the model is healthy. The draft can be strong
 while a material claim remains unsupported. The article can be approved while a
 remote publishing endpoint is unavailable.

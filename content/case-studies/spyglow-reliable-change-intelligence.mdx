@@ -2,6 +2,7 @@
 title: "Building reliable change intelligence for SpyGlow"
 description: How I separated capture quality, deterministic comparison and AI interpretation to make competitor monitoring more trustworthy.
 published: 2026-07-27
+updated: 2026-10-15
 role: Founder, product strategy and full-stack engineering
 stack: [Next.js, Node.js, MongoDB, Redis, BullMQ, Playwright]
 draft: false
@@ -39,8 +40,8 @@ I designed the monitoring path as a sequence of explicit responsibilities.
    validated intelligence.
 
 Scheduled work, browser processes, queues and notifications live around that
-core path. Watchdog and recovery behavior make the scheduler observable instead
-of assuming recurring work is healthy because a process is running.
+core path. Watchdog and recovery behavior make the scheduler observable, so
+stalled recurring work is detected and recovered.
 
 ## Alternatives I rejected
 
@@ -49,8 +50,8 @@ and ask it to identify the change. I rejected that as the primary comparison
 mechanism because it combines evidence collection, diffing and interpretation in
 one probabilistic step.
 
-I also rejected treating every small difference as an alert. More alerts can
-look like more value in a demo, but noise transfers the review cost to the user.
+I also rejected treating every small difference as an alert, because noise
+transfers the review cost to the user.
 The product needs to preserve important evidence while filtering changes that do
 not affect a competitive decision.
 
