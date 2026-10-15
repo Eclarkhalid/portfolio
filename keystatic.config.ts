@@ -1,4 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
+import { block } from "@keystatic/core/content-components";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -19,6 +20,21 @@ function slugField(label: string, min: number, max: number) {
     },
   });
 }
+
+// MDX components available in bodies; must match components/mdx.tsx
+const mdxComponents = {
+  Figure: block({
+    label: "Figure",
+    description: "An illustration from public/images/ with a caption.",
+    schema: {
+      src: fields.text({ label: "Image path", description: "Starts with /images/" }),
+      alt: fields.text({ label: "Alt text" }),
+      caption: fields.text({ label: "Caption", multiline: true }),
+      width: fields.text({ label: "Width (px)", defaultValue: "1200" }),
+      height: fields.text({ label: "Height (px)", defaultValue: "675" }),
+    },
+  }),
+};
 
 const technologyField = fields.text({
   label: "Technology",
@@ -62,7 +78,7 @@ export default config({
           fields.relationship({ label: "Related article", collection: "articles" }),
           { label: "Related articles", itemLabel: (props) => props.value ?? "" }
         ),
-        body: fields.mdx({ label: "Body" }),
+        body: fields.mdx({ label: "Body", components: mdxComponents }),
       },
     }),
     caseStudies: collection({
@@ -97,7 +113,7 @@ export default config({
           fields.relationship({ label: "Related article", collection: "articles" }),
           { label: "Related articles", itemLabel: (props) => props.value ?? "" }
         ),
-        body: fields.mdx({ label: "Body" }),
+        body: fields.mdx({ label: "Body", components: mdxComponents }),
       },
     }),
     products: collection({
@@ -135,7 +151,7 @@ export default config({
           validation: { isRequired: true },
         }),
         updated: fields.date({ label: "Updated (optional)" }),
-        body: fields.mdx({ label: "Engineering story" }),
+        body: fields.mdx({ label: "Engineering story", components: mdxComponents }),
       },
     }),
   },

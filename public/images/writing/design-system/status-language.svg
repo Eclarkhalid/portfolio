@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="t d">
+  <title id="t">One status language</title>
+  <desc id="d">Five meanings, each with one colour family and one word: completed in green, review needed in amber, in progress in blue, failed in red and not started in grey. The word always appears with the colour.</desc>
+  <style>
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #171717; }
+    .kicker { font-size: 13px; font-weight: 600; letter-spacing: 2.4px; fill: #0369a1; }
+    .head { font-size: 13px; font-weight: 600; letter-spacing: 1.6px; fill: #737373; }
+    .meaning { font-size: 18px; font-weight: 600; }
+    .body { font-size: 15px; fill: #525252; }
+    .pill { font-size: 15px; font-weight: 500; }
+  </style>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="60" y="64" class="kicker">ONE STATUS LANGUAGE</text>
+
+  <text x="60" y="122" class="head">MEANING</text>
+  <text x="400" y="122" class="head">ON EVERY SCREEN</text>
+  <text x="680" y="122" class="head">USED FOR</text>
+  <line x1="60" y1="140" x2="1140" y2="140" stroke="#e5e5e5"/>
+
+  <!-- rows: y centers 192, 284, 376, 468, 560 -->
+  <g>
+    <rect x="60" y="174" width="6" height="36" rx="3" fill="#16a34a"/>
+    <text x="84" y="198" class="meaning">Done</text>
+    <rect x="400" y="174" width="150" height="36" rx="18" fill="#dcfce7" stroke="#bbf7d0"/>
+    <circle cx="422" cy="192" r="5" fill="#16a34a"/>
+    <text x="436" y="198" class="pill" style="fill:#166534">Approved</text>
+    <text x="680" y="198" class="body">Completed, approved, healthy</text>
+    <line x1="60" y1="238" x2="1140" y2="238" stroke="#f0f0f0"/>
+  </g>
+  <g>
+    <rect x="60" y="266" width="6" height="36" rx="3" fill="#d97706"/>
+    <text x="84" y="290" class="meaning">Needs attention</text>
+    <rect x="400" y="266" width="170" height="36" rx="18" fill="#fef3c7" stroke="#fde68a"/>
+    <circle cx="422" cy="284" r="5" fill="#d97706"/>
+    <text x="436" y="290" class="pill" style="fill:#92400e">Review needed</text>
+    <text x="680" y="290" class="body">Review needed, due soon</text>
+    <line x1="60" y1="330" x2="1140" y2="330" stroke="#f0f0f0"/>
+  </g>
+  <g>
+    <rect x="60" y="358" width="6" height="36" rx="3" fill="#2563eb"/>
+    <text x="84" y="382" class="meaning">Moving</text>
+    <rect x="400" y="358" width="150" height="36" rx="18" fill="#dbeafe" stroke="#bfdbfe"/>
+    <circle cx="422" cy="376" r="5" fill="#2563eb"/>
+    <text x="436" y="382" class="pill" style="fill:#1e40af">In progress</text>
+    <text x="680" y="382" class="body">In progress, sent, information</text>
+    <line x1="60" y1="422" x2="1140" y2="422" stroke="#f0f0f0"/>
+  </g>
+  <g>
+    <rect x="60" y="450" width="6" height="36" rx="3" fill="#dc2626"/>
+    <text x="84" y="474" class="meaning">Stopped</text>
+    <rect x="400" y="450" width="120" height="36" rx="18" fill="#fee2e2" stroke="#fecaca"/>
+    <circle cx="422" cy="468" r="5" fill="#dc2626"/>
+    <text x="436" y="474" class="pill" style="fill:#991b1b">Overdue</text>
+    <text x="680" y="474" class="body">Failed, overdue, destructive</text>
+    <line x1="60" y1="514" x2="1140" y2="514" stroke="#f0f0f0"/>
+  </g>
+  <g>
+    <rect x="60" y="542" width="6" height="36" rx="3" fill="#a3a3a3"/>
+    <text x="84" y="566" class="meaning">Waiting</text>
+    <rect x="400" y="542" width="150" height="36" rx="18" fill="#f5f5f5" stroke="#e5e5e5"/>
+    <circle cx="422" cy="560" r="5" fill="#737373"/>
+    <text x="436" y="566" class="pill" style="fill:#525252">Not started</text>
+    <text x="680" y="566" class="body">Not started, inactive</text>
+  </g>
+
+  <text x="60" y="630" class="body">Colour reinforces the word and never replaces it. The soft ground, the dot and the text colour are fixed tokens per meaning.</text>
+</svg>

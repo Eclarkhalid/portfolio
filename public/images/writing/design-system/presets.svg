@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="t d">
+  <title id="t">What a brand preset may change</title>
+  <desc id="d">A preset changes the primary colour and the corner radius. Status colours and chart colours stay the same in every preset, so meaning never changes with the brand.</desc>
+  <style>
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; fill: #171717; }
+    .kicker { font-size: 13px; font-weight: 600; letter-spacing: 2.4px; }
+    .title { font-size: 24px; font-weight: 600; }
+    .body { font-size: 15px; fill: #525252; }
+    .label { font-size: 13px; font-weight: 500; fill: #525252; }
+    .btn { font-size: 14px; font-weight: 500; }
+  </style>
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- left: changes -->
+  <rect x="40" y="40" width="545" height="595" rx="22" fill="#f0f9ff" stroke="#bae6fd"/>
+  <text x="76" y="92" class="kicker" style="fill:#0369a1">CHANGES WITH THE PRESET</text>
+  <text x="76" y="132" class="title">Brand: primary and shape</text>
+  <text x="76" y="160" class="body">An organization picks the look of its workspace.</text>
+
+  <g>
+    <text x="76" y="214" class="label">Default</text>
+    <rect x="76" y="226" width="140" height="40" rx="12" fill="#2563eb"/><text x="104" y="251" class="btn" style="fill:#ffffff">Save changes</text>
+    <text x="256" y="214" class="label">Emerald</text>
+    <rect x="256" y="226" width="140" height="40" rx="9" fill="#047857"/><text x="284" y="251" class="btn" style="fill:#ffffff">Save changes</text>
+
+    <text x="76" y="314" class="label">Violet</text>
+    <rect x="76" y="326" width="140" height="40" rx="9" fill="#7c3aed"/><text x="104" y="351" class="btn" style="fill:#ffffff">Save changes</text>
+    <text x="256" y="314" class="label">Orange, square corners</text>
+    <rect x="256" y="326" width="140" height="40" rx="0" fill="#c2410c"/><text x="284" y="351" class="btn" style="fill:#ffffff">Save changes</text>
+
+    <text x="76" y="414" class="label">Bright primary, dark text for contrast</text>
+    <rect x="76" y="426" width="140" height="40" rx="9" fill="#a3e635"/><text x="104" y="451" class="btn" style="fill:#1a2e05">Save changes</text>
+  </g>
+  <text x="76" y="530" class="body">Every light value has a matching dark value,</text>
+  <text x="76" y="554" class="body">and button text keeps its contrast on bright</text>
+  <text x="76" y="578" class="body">primaries.</text>
+
+  <!-- right: fixed -->
+  <rect x="615" y="40" width="545" height="595" rx="22" fill="#fafafa" stroke="#e5e5e5"/>
+  <text x="651" y="92" class="kicker" style="fill:#6d28d9">NEVER CHANGES</text>
+  <text x="651" y="132" class="title">Meaning: status and data</text>
+  <text x="651" y="160" class="body">The same in every preset, light and dark.</text>
+
+  <text x="651" y="214" class="label">Status</text>
+  <g>
+    <rect x="651" y="226" width="112" height="32" rx="16" fill="#dcfce7"/><circle cx="669" cy="242" r="4.5" fill="#16a34a"/><text x="681" y="247" class="btn" style="fill:#166534;font-size:13px">Approved</text>
+    <rect x="773" y="226" width="134" height="32" rx="16" fill="#fef3c7"/><circle cx="791" cy="242" r="4.5" fill="#d97706"/><text x="803" y="247" class="btn" style="fill:#92400e;font-size:13px">Review needed</text>
+    <rect x="917" y="226" width="114" height="32" rx="16" fill="#dbeafe"/><circle cx="935" cy="242" r="4.5" fill="#2563eb"/><text x="947" y="247" class="btn" style="fill:#1e40af;font-size:13px">In progress</text>
+    <rect x="651" y="268" width="96" height="32" rx="16" fill="#fee2e2"/><circle cx="669" cy="284" r="4.5" fill="#dc2626"/><text x="681" y="289" class="btn" style="fill:#991b1b;font-size:13px">Overdue</text>
+  </g>
+
+  <text x="651" y="350" class="label">Charts</text>
+  <g>
+    <rect x="651" y="362" width="44" height="44" rx="10" fill="#2563eb"/>
+    <rect x="703" y="362" width="44" height="44" rx="10" fill="#7c3aed"/>
+    <rect x="755" y="362" width="44" height="44" rx="10" fill="#16a34a"/>
+    <rect x="807" y="362" width="44" height="44" rx="10" fill="#d97706"/>
+    <rect x="859" y="362" width="44" height="44" rx="10" fill="#0891b2"/>
+    <rect x="911" y="362" width="44" height="44" rx="10" fill="#e11d48"/>
+  </g>
+  <g>
+    <rect x="651" y="430" width="300" height="72" rx="12" fill="#ffffff" stroke="#e5e5e5"/>
+    <rect x="671" y="478" width="28" height="12" rx="2" fill="#2563eb"/>
+    <rect x="707" y="462" width="28" height="28" rx="2" fill="#2563eb"/>
+    <rect x="743" y="450" width="28" height="40" rx="2" fill="#7c3aed"/>
+    <rect x="779" y="470" width="28" height="20" rx="2" fill="#16a34a"/>
+    <rect x="815" y="456" width="28" height="34" rx="2" fill="#d97706"/>
+    <rect x="851" y="466" width="28" height="24" rx="2" fill="#0891b2"/>
+    <rect x="887" y="458" width="28" height="32" rx="2" fill="#e11d48"/>
+  </g>
+  <text x="651" y="554" class="body">A green "Approved" means the same thing in</text>
+  <text x="651" y="578" class="body">every organization, whatever its brand colour.</text>
+</svg>
