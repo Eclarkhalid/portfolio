@@ -62,7 +62,8 @@ export default function RootLayout({
             <Sidebar />
             {/* Page card, plus Lumen's panel as a column on the right when open */}
             <div className="flex min-w-0 flex-1 lg:gap-2 lg:p-2">
-              <div className="scrollbar-subtle min-w-0 flex-1 overflow-y-auto lg:rounded-xl">
+              {/* @container: pages can size to the space left beside Lumen */}
+              <div className="scrollbar-subtle @container min-w-0 flex-1 overflow-y-auto lg:rounded-xl">
                 <div className="bg-white min-h-full lg:rounded-xl border border-transparent lg:border-neutral-200">
                   {children}
                 </div>

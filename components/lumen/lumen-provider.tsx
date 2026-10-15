@@ -44,6 +44,16 @@ export function LumenProvider({ children }: { children: ReactNode }) {
   return <LumenContext.Provider value={value}>{children}</LumenContext.Provider>;
 }
 
+/** A button that opens Lumen's panel, for use inside server-rendered pages. */
+export function OpenLumenButton({ className, children }: { className?: string; children: ReactNode }) {
+  const { setOpen } = useLumen();
+  return (
+    <button type="button" onClick={() => setOpen(true)} aria-controls="lumen-panel" className={className}>
+      {children}
+    </button>
+  );
+}
+
 /**
  * The panel column beside the page on large screens, a full-screen sheet on
  * phones. When closed on phones, a floating button opens it.

@@ -1,5 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { AppLogo } from "@/components/app-logo";
+import { LumenMark } from "@/components/lumen/lumen-mark";
+import { OpenLumenButton } from "@/components/lumen/lumen-provider";
 import { Container, PageHeader, SectionIndex } from "@/components/base";
 import { TechStack } from "@/components/tech-stack";
 import { projects } from "@/content/projects";
@@ -40,7 +42,7 @@ export default function PersonalProjectsPage() {
           <article
             key={project.slug}
             id={project.slug}
-            className="grid gap-8 border-b border-neutral-200 py-10 md:grid-cols-[3rem_minmax(0,1fr)_16rem] md:gap-10"
+            className="grid gap-8 border-b border-neutral-200 py-10 @4xl:grid-cols-[3rem_minmax(0,1fr)_16rem] @4xl:gap-10"
           >
             <span className="text-xs tabular-nums text-neutral-500">
               {String(index + 1).padStart(2, "0")}
@@ -55,7 +57,7 @@ export default function PersonalProjectsPage() {
               <p className="mt-5 max-w-2xl text-base leading-7 text-neutral-700">
                 {project.description}
               </p>
-              <ul className="mt-6 grid max-w-3xl gap-3 md:grid-cols-2">
+              <ul className="mt-6 grid max-w-3xl gap-3 @2xl:grid-cols-2">
                 {project.highlights.map((highlight) => (
                   <li
                     key={highlight}
@@ -65,14 +67,20 @@ export default function PersonalProjectsPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800"
-              >
-                Open {project.name} <ExternalLink aria-hidden="true" className="h-4 w-4" />
-              </a>
+              {project.opens === "lumen" ? (
+                <OpenLumenButton className="mt-7 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800">
+                  Try {project.name} <LumenMark className="h-4 w-4" />
+                </OpenLumenButton>
+              ) : (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800"
+                >
+                  Open {project.name} <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                </a>
+              )}
             </div>
             <aside>
               <SectionIndex number="01" title="Built with" />

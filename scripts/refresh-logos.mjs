@@ -34,7 +34,15 @@ async function sources() {
     list.push({ slug: match[1], url: match[2] });
   }
 
-  return list;
+  // Features hosted on this site itself (like Lumen) keep their hand-made
+  // logo: fetching would only return the portfolio's own icon.
+  const profile = await fs.readFile(path.join(root, "content", "profile.ts"), "utf8");
+  const siteHost = new URL(profile.match(/siteUrl:\s*"([^"]+)"/)[1]).host;
+  return list.filter(({ slug, url }) => {
+    if (new URL(url).host !== siteHost) return true;
+    console.log(`${slug}: hosted on ${siteHost}, keeping public/images/logos/${slug}.png`);
+    return false;
+  });
 }
 
 const attr = (tag, name) => tag.match(new RegExp(`${name}\\s*=\\s*"([^"]*)"`, "i"))?.[1];

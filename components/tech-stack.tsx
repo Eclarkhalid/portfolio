@@ -15,6 +15,8 @@ import {
   siLinux,
   siTailwindcss,
   siShadcnui,
+  siClaude,
+  siAnthropic,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -35,6 +37,8 @@ const icons: Record<string, SimpleIcon> = {
   Linux: siLinux,
   "Tailwind CSS": siTailwindcss,
   "shadcn/ui": siShadcnui,
+  "Claude Sonnet 5.5": siClaude,
+  "Anthropic SDK": siAnthropic,
 };
 
 export function TechStack({ items }: { items: readonly string[] }) {
