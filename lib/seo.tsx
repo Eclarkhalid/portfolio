@@ -6,10 +6,18 @@ export function personJsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: profile.name,
+    alternateName: profile.alternateName,
     url: profile.siteUrl,
     email: `mailto:${profile.email}`,
     image: `${profile.siteUrl}${profile.avatar}`,
     jobTitle: profile.shortTitle,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: profile.location.city,
+      addressCountry: profile.location.countryCode,
+    },
+    knowsLanguage: profile.languages.map((language) => language.code),
+    alumniOf: { "@type": "CollegeOrUniversity", name: profile.education.school },
     sameAs: Object.values(profile.links),
   };
 }

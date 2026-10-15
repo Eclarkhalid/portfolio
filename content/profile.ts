@@ -4,13 +4,28 @@
  */
 export const profile = {
   name: "Eclar Khalid",
+  // Also known as; used in structured data so search engines connect both names
+  alternateName: "Erick Gitau",
   tagline:
     "Software engineer, technical leader and product founder building reliable SaaS, AI, web and mobile products.",
   shortTitle: "Software Engineer, Technical Leader & Product Founder",
   email: "eclarkhalid@gmail.com",
   siteUrl: "https://eclarkhalid.com",
   xHandle: "@eclarkhalid",
-  location: "",
+  location: {
+    city: "Nairobi",
+    country: "Kenya",
+    countryCode: "KE",
+    note: "Works remotely with international teams",
+  },
+  languages: [
+    { name: "English", code: "en" },
+    { name: "French", code: "fr" },
+  ],
+  education: {
+    degree: "Bachelor of Business Information Technology",
+    school: "Mount Kenya University",
+  },
   avatar: "/profile-image.jpg",
   sidebarNote: "Build systems that surface truth and earn trust.",
   about: {
@@ -18,6 +33,7 @@ export const profile = {
       "I'm Eclar Khalid, a software engineer, technical leader and product founder. I design, build and lead the development of production software, from early product decisions and system architecture to implementation, deployment and continuous improvement.",
     body: [
       "My work spans SaaS platforms, AI systems, web applications and mobile products. I turn complex product requirements into reliable systems while keeping architecture, operational risk and long-term maintainability in view.",
+      "I'm based in Nairobi, Kenya, and work remotely with product teams in Europe, the UK and beyond, leading technical direction as well as writing the code.",
       "I founded and built SpyGlow and Ryterr. Working across product direction, software architecture, implementation and operations has shaped how I approach engineering: the code matters, but so do the decisions around scope, evidence, reliability and how a product behaves after it ships.",
       "I write about the practical engineering choices behind production software, especially where deterministic systems, AI workflows and product judgment meet.",
     ],
@@ -28,12 +44,18 @@ export const profile = {
     "Next.js",
     "React",
     "Node.js",
+    "Express",
     "PostgreSQL",
     "MongoDB",
+    "SQLite",
     "Redis",
+    "BullMQ",
     "Docker",
     "Nginx",
+    "Linux",
+    "CI/CD",
     "Tailwind CSS",
+    "shadcn/ui",
     "AI systems (LLM APIs, RAG, agents)",
   ],
   links: {

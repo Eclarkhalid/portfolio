@@ -37,8 +37,28 @@ export default function AboutPage() {
         <div className="mt-6 max-w-4xl"><TechStack items={profile.stack} /></div>
       </section>
 
+      <section className="grid gap-8 border-t border-neutral-200 py-10 md:grid-cols-[17rem_minmax(0,1fr)]">
+        <SectionIndex number="02" title="Background" />
+        <dl className="grid max-w-3xl gap-6 sm:grid-cols-3">
+          <div>
+            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Location</dt>
+            <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.location.city}, {profile.location.country}</dd>
+            <dd className="mt-1 text-sm text-neutral-600">{profile.location.note}</dd>
+          </div>
+          <div>
+            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Languages</dt>
+            <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.languages.map((language) => language.name).join(" and ")}</dd>
+          </div>
+          <div>
+            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Education</dt>
+            <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.education.degree}</dd>
+            <dd className="mt-1 text-sm text-neutral-600">{profile.education.school}</dd>
+          </div>
+        </dl>
+      </section>
+
       <section className="grid gap-8 border-y border-neutral-200 py-10 md:grid-cols-[17rem_minmax(0,1fr)]">
-        <SectionIndex number="02" title="Elsewhere" />
+        <SectionIndex number="03" title="Elsewhere" />
         <div>
           <p className="max-w-2xl text-lg leading-8 text-neutral-700">I share tutorials on YouTube and write about the engineering decisions behind production software on this site.</p>
           <div className="mt-5 flex flex-wrap gap-5">

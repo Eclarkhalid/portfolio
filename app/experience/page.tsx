@@ -17,7 +17,7 @@ export default function ExperiencePage() {
     <Container className="max-w-7xl">
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Experience", path: "/experience" }])} />
       <PageHeader eyebrow="Career and practice" title="Experience">
-        Engineering and technology leadership roles, alongside building products of my own.
+        Technology leadership, founding and full-stack engineering roles, most of them with remote teams across Europe, the UK and India.
       </PageHeader>
 
       <section className="mt-20 border-t border-neutral-200">
@@ -30,6 +30,7 @@ export default function ExperiencePage() {
             <div>
               <p className="text-xs font-semibold text-sky-700">{role.start} to {role.end ?? "Present"}</p>
               <p className="mt-2 text-sm font-semibold text-neutral-900">{role.company}</p>
+              {role.location && <p className="mt-1 text-xs text-neutral-500">{role.location}</p>}
             </div>
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">{role.title}</h2>

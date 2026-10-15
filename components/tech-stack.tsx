@@ -5,12 +5,16 @@ import {
   siNextdotjs,
   siReact,
   siNodedotjs,
+  siExpress,
   siPostgresql,
   siMongodb,
+  siSqlite,
   siRedis,
   siDocker,
   siNginx,
+  siLinux,
   siTailwindcss,
+  siShadcnui,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -21,12 +25,16 @@ const icons: Record<string, SimpleIcon> = {
   "Next.js": siNextdotjs,
   React: siReact,
   "Node.js": siNodedotjs,
+  Express: siExpress,
   PostgreSQL: siPostgresql,
   MongoDB: siMongodb,
+  SQLite: siSqlite,
   Redis: siRedis,
   Docker: siDocker,
   Nginx: siNginx,
+  Linux: siLinux,
   "Tailwind CSS": siTailwindcss,
+  "shadcn/ui": siShadcnui,
 };
 
 export function TechStack({ items }: { items: readonly string[] }) {
