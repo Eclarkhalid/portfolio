@@ -66,9 +66,11 @@ export function Sidebar() {
         id="portfolio-navigation"
         aria-label="Portfolio navigation"
         className={twMerge(
-          "fixed inset-y-0 left-0 z-50 flex h-dvh w-64 flex-col border-r border-neutral-300 bg-neutral-100 px-6 py-8 transition-transform duration-200",
-          "lg:relative lg:h-auto lg:w-52 lg:translate-x-0 lg:px-5 lg:py-9",
-          open ? "translate-x-0" : "-translate-x-full"
+          "fixed inset-y-0 left-0 z-50 flex h-dvh w-64 flex-col border-r border-neutral-300 bg-neutral-100 px-6 py-8 transition-[transform,visibility] duration-200",
+          "lg:visible lg:relative lg:h-auto lg:w-52 lg:translate-x-0 lg:px-5 lg:py-9",
+          // `invisible` keeps the off-screen drawer out of the tab order and
+          // accessibility tree; visibility flips after the slide-out finishes.
+          open ? "visible translate-x-0" : "invisible -translate-x-full"
         )}
       >
         <div className="flex min-h-0 flex-1 flex-col">

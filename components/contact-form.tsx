@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { startTransition, useActionState, useEffect, useRef } from "react";
 import { sendMessage, type ContactState } from "@/app/contact/actions";
 
 export function ContactForm() {
@@ -34,6 +34,13 @@ export function ContactForm() {
   return (
     <form
       action={formAction}
+      onSubmit={(event) => {
+        // Submit manually so React's automatic form reset doesn't wipe what
+        // the visitor typed when delivery fails. Without JS, `action` still works.
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        startTransition(() => formAction(formData));
+      }}
       className="flex max-w-2xl flex-col gap-5"
       aria-busy={pending}
     >
