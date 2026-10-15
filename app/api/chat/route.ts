@@ -184,6 +184,7 @@ export async function POST(request: Request) {
     async start(controller) {
       const send = (event: LumenEvent) => controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
 
+      let sentText = false;
       try {
         for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
           const response = client.beta.messages.stream(
@@ -203,7 +204,13 @@ export async function POST(request: Request) {
             { signal: request.signal }
           );
 
-          response.on("text", (delta) => send({ type: "text", text: delta }));
+          // Text after a tool round starts a new paragraph, not mid-sentence
+          let first = round > 0 && sentText;
+          response.on("text", (delta) => {
+            sentText = true;
+            send({ type: "text", text: first ? `\n\n${delta.trimStart()}` : delta });
+            first = false;
+          });
 
           let message: Anthropic.Beta.BetaMessage;
           try {
@@ -214,6 +221,12 @@ export async function POST(request: Request) {
             continue;
           }
           recordUsage(message.usage);
+          // Token counts only (never message content), to watch cost and cache hits
+          console.info(
+            `Lumen usage: in=${message.usage.input_tokens} out=${message.usage.output_tokens} ` +
+              `cache_read=${message.usage.cache_read_input_tokens ?? 0} cache_write=${message.usage.cache_creation_input_tokens ?? 0} ` +
+              `stop=${message.stop_reason} mode=${body.mode}`
+          );
 
           if (message.stop_reason === "refusal") {
             send({
@@ -245,7 +258,10 @@ export async function POST(request: Request) {
               results.push({
                 type: "tool_result",
                 tool_use_id: toolUse.id,
-                content: pages.length > 0 ? "Shown to the visitor." : "No valid site paths. Use paths from the page list.",
+                content:
+                  pages.length > 0
+                    ? "Shown to the visitor as link cards below your answer. Don't describe them as above."
+                    : "No valid site paths. Use paths from the page list.",
                 is_error: pages.length === 0,
               });
             } else if (toolUse.name === "draft_contact") {
@@ -255,7 +271,7 @@ export async function POST(request: Request) {
                 type: "tool_result",
                 tool_use_id: toolUse.id,
                 content: parsed.success
-                  ? "The draft is ready for the visitor to review and send. Mention it briefly."
+                  ? "The draft is ready as a button below your answer for the visitor to review and send. Mention it briefly."
                   : "The summary was invalid. Write two to four sentences.",
                 is_error: !parsed.success,
               });
