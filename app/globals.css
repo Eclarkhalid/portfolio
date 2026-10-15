@@ -23,9 +23,20 @@ body {
   font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 }
 
-:focus-visible {
-  outline: 3px solid #0284c7;
-  outline-offset: 3px;
+/* In the base layer so component utilities (e.g. outline-none on an input
+   inside a styled focus ring) can override it. Unlayered, it beat them. */
+@layer base {
+  :focus-visible {
+    outline: 3px solid #0284c7;
+    outline-offset: 3px;
+  }
+}
+
+/* Thin, neutral scrollbars for the page card and Lumen's conversation,
+   which sit side by side when Lumen is open. */
+@utility scrollbar-subtle {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
 }
 
 ::selection {

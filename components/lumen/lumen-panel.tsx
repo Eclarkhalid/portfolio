@@ -277,7 +277,7 @@ export default function LumenPanel({ onClose }: { onClose: () => void }) {
         <p className="mt-2.5 text-xs leading-[18px] text-neutral-600">{config.caption}</p>
       </header>
 
-      <div aria-live="polite" className="min-h-0 flex-1 overflow-y-auto bg-neutral-50/50 px-5 py-4">
+      <div aria-live="polite" className="scrollbar-subtle min-h-0 flex-1 overflow-y-auto bg-neutral-50/50 px-5 py-4">
         {messages.length === 0 ? (
           <div className="flex flex-col gap-2">
             {config.starters.map((starter) => (
@@ -365,7 +365,7 @@ export default function LumenPanel({ onClose }: { onClose: () => void }) {
             onChange={(event) => setInput(event.target.value)}
             onKeyDown={onKeyDown}
             placeholder={config.placeholder}
-            className="max-h-40 min-h-10 flex-1 resize-none bg-transparent py-1 text-base leading-5 text-neutral-900 outline-none placeholder:text-neutral-400 lg:text-sm"
+            className="scrollbar-subtle max-h-40 min-h-10 flex-1 resize-none bg-transparent py-1 text-base leading-5 text-neutral-900 outline-none placeholder:text-neutral-400 focus-visible:outline-none lg:text-sm"
           />
           {busy ? (
             <button type="button" onClick={() => abortRef.current?.abort()} aria-label="Stop" className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
