@@ -6,7 +6,7 @@ import { testimonials, type Testimonial } from "@/content/testimonials";
 
 function Attribution({ item }: { item: Testimonial }) {
   return (
-    <figcaption className="mt-4 text-xs leading-5 text-neutral-500">
+    <figcaption className="mt-4 type-meta text-neutral-500">
       <span className="font-semibold text-neutral-800">{item.author}</span>
       {" · "}
       {item.country}

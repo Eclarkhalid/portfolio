@@ -77,7 +77,7 @@ export function PageHeader({
 }) {
   return (
     <header className={twMerge("max-w-4xl", className)}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">
+      <p className="type-eyebrow text-sky-700">
         {eyebrow}
       </p>
       <Heading className="mt-6">{title}</Heading>
@@ -98,10 +98,10 @@ export function SectionIndex({
 }) {
   return (
     <div className="flex items-baseline gap-4">
-      <span className="text-[11px] font-semibold tabular-nums text-sky-700">
+      <span className="type-index text-sky-700">
         {number}
       </span>
-      <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+      <h2 className="type-chapter text-neutral-900">
         {title}
       </h2>
     </div>

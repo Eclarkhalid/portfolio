@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="mt-20 grid gap-10 border-t border-neutral-200 py-10 md:grid-cols-[16rem_minmax(0,1fr)] md:gap-16">
         <div>
           <Image src={profile.avatar} alt={profile.name} width={256} height={256} className="aspect-square w-full max-w-64 rounded-3xl object-cover" preload />
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600">{profile.name}</p>
+          <p className="mt-4 text-sm font-semibold text-neutral-700">{profile.name}</p>
           <p className="mt-1 text-sm text-neutral-700">Software engineer, technical leader and product founder</p>
         </div>
         <div className="max-w-3xl space-y-6">
@@ -41,16 +41,16 @@ export default function AboutPage() {
         <SectionIndex number="02" title="Background" />
         <dl className="grid max-w-3xl gap-6 sm:grid-cols-3">
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Location</dt>
+            <dt className="type-label text-neutral-600">Location</dt>
             <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.location.city}, {profile.location.country}</dd>
             <dd className="mt-1 text-sm text-neutral-600">{profile.location.note}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Languages</dt>
+            <dt className="type-label text-neutral-600">Languages</dt>
             <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.languages.map((language) => language.name).join(" and ")}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Education</dt>
+            <dt className="type-label text-neutral-600">Education</dt>
             <dd className="mt-2 text-sm font-medium text-neutral-800">{profile.education.degree}</dd>
             <dd className="mt-1 text-sm text-neutral-600">{profile.education.school}</dd>
           </div>

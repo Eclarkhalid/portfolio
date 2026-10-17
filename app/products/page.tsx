@@ -47,7 +47,7 @@ export default function ProductsPage() {
               key={product.slug}
               className="group grid gap-6 border-b border-neutral-200 py-9 md:grid-cols-[3rem_6rem_minmax(0,1fr)_auto] md:items-center md:gap-8"
             >
-              <span className="text-xs tabular-nums text-neutral-500">
+              <span className="type-index text-neutral-500">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <AppLogo slug={product.slug} name={product.meta.title} size={80} />
@@ -58,12 +58,12 @@ export default function ProductsPage() {
                       {product.meta.title}
                     </Link>
                   </h2>
-                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-800">
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-800">
                     Active
                   </span>
                 </div>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700">{product.meta.description}</p>
-                <p className="mt-3 text-xs leading-5 text-neutral-500">{product.meta.stack.join(" · ")}</p>
+                <p className="mt-3 type-meta text-neutral-500">{product.meta.stack.join(" · ")}</p>
               </div>
               <div className="flex flex-col items-start gap-3 md:items-end">
                 <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 transition hover:text-sky-700">
@@ -90,7 +90,7 @@ export default function ProductsPage() {
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
                     <h3 className="text-xl font-semibold text-neutral-900">{product.meta.title}</h3>
-                    <span className="rounded-full border border-neutral-300 bg-neutral-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-600">Sunsetted</span>
+                    <span className="rounded-full border border-neutral-300 bg-neutral-50 px-2.5 py-1 text-xs font-medium text-neutral-600">Sunsetted</span>
                   </div>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-700">{product.meta.description}</p>
                 </div>
