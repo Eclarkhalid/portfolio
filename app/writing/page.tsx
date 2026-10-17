@@ -34,12 +34,12 @@ export default function WritingPage() {
             href={`/writing/${article.slug}`}
             className="group grid gap-5 border-b border-neutral-200 py-8 md:grid-cols-[3rem_9rem_minmax(0,1fr)_auto] md:items-start md:gap-8"
           >
-            <span className="text-xs tabular-nums text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
+            <span className="type-index text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
             <span>
               <time dateTime={article.meta.published.toISOString()} className="block text-xs font-medium text-neutral-600">{dateFmt.format(article.meta.published)}</time>
               <span className="mt-3 flex flex-wrap gap-1.5">
                 {article.meta.tags.slice(0, 2).map((tag) => (
-                  <span key={tag} className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${pillClasses(tag)}`}>{tag}</span>
+                  <span key={tag} className={`rounded-full border px-2 py-0.5 text-xs font-medium ${pillClasses(tag)}`}>{tag}</span>
                 ))}
               </span>
             </span>

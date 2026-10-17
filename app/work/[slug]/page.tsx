@@ -39,17 +39,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       <article className="mt-10">
         <header className="max-w-5xl border-b border-neutral-200 pb-12">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">Case study</p>
+          <p className="type-eyebrow text-sky-700">Case study</p>
           <h1 className="mt-6 text-4xl font-semibold tracking-[-0.045em] text-neutral-950 md:text-6xl">{study.meta.title}</h1>
           <AccentBar />
           <p className="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">{study.meta.description}</p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Role</p>
+              <p className="type-label text-neutral-600">Role</p>
               <p className="mt-2 text-sm font-medium text-neutral-800">{study.meta.role}</p>
             </div>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Technology</p>
+              <p className="type-label text-neutral-600">Technology</p>
               <p className="mt-2 text-sm leading-6 text-neutral-700">{study.meta.stack.join(" · ")}</p>
             </div>
           </div>
@@ -59,7 +59,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       {related.length > 0 && (
         <aside className="mt-10 border-t border-neutral-200 pt-8">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Related engineering notes</p>
+          <p className="type-label text-neutral-600">Related engineering notes</p>
           <div className="mt-5 flex flex-col gap-3">
             {related.map((article) => (
               <Link key={article.slug} href={`/writing/${article.slug}`} className="group inline-flex items-center gap-2 text-base font-semibold text-violet-700 hover:text-sky-700">
