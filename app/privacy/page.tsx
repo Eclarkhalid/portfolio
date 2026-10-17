@@ -37,13 +37,13 @@ export default function PrivacyPage() {
       <section className="mt-20 max-w-4xl border-t border-neutral-200">
         {sections.map((section, index) => (
           <article key={section.title} className="grid gap-5 border-b border-neutral-200 py-9 md:grid-cols-[3rem_15rem_minmax(0,1fr)] md:gap-8">
-            <span className="text-xs tabular-nums text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
+            <span className="type-index text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
             <h2 className="text-lg font-semibold text-neutral-900">{section.title}</h2>
             <p className="text-sm leading-7 text-neutral-700">{section.body}</p>
           </article>
         ))}
         <article className="grid gap-5 border-b border-neutral-200 py-9 md:grid-cols-[3rem_15rem_minmax(0,1fr)] md:gap-8">
-          <span className="text-xs tabular-nums text-neutral-500">{String(sections.length + 1).padStart(2, "0")}</span>
+          <span className="type-index text-neutral-500">{String(sections.length + 1).padStart(2, "0")}</span>
           <h2 className="text-lg font-semibold text-neutral-900">Questions or requests</h2>
           <p className="text-sm leading-7 text-neutral-700">For questions about an inquiry or to request its deletion, email <a className="font-semibold text-sky-700 hover:underline" href={`mailto:${profile.email}`}>{profile.email}</a>.</p>
         </article>
