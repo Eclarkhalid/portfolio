@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <Link
             href="/"
-            className="group flex items-center justify-between rounded-2xl border border-neutral-200 bg-white p-6 transition hover:border-sky-200 hover:bg-sky-50/40"
+            className="group flex items-center justify-between rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50/40 hover:shadow-sm"
           >
             <span>
               <span className="block text-sm font-semibold text-neutral-900">
@@ -40,7 +40,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/work"
-            className="group flex items-center justify-between rounded-2xl border border-violet-100 bg-violet-50/40 p-6 transition hover:border-violet-200 hover:bg-violet-50"
+            className="group flex items-center justify-between rounded-2xl border border-violet-100 bg-violet-50/40 p-6 transition hover:-translate-y-0.5 hover:border-violet-200 hover:bg-violet-50 hover:shadow-sm"
           >
             <span>
               <span className="block text-sm font-semibold text-neutral-900">

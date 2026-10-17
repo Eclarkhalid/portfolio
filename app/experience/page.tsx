@@ -26,7 +26,7 @@ export default function ExperiencePage() {
             key={`${role.company}-${role.start}`}
             className="grid gap-6 border-b border-neutral-200 py-10 md:grid-cols-[3rem_12rem_minmax(0,1fr)] md:gap-8"
           >
-            <span className="text-xs tabular-nums text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
+            <span className="type-index text-neutral-500">{String(index + 1).padStart(2, "0")}</span>
             <div>
               <p className="text-xs font-semibold text-sky-700">{role.start} to {role.end ?? "Present"}</p>
               <p className="mt-2 text-sm font-semibold text-neutral-900">{role.company}</p>

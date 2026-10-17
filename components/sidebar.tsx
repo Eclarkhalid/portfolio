@@ -78,7 +78,7 @@ export function Sidebar() {
       >
         <div className="flex min-h-0 flex-1 flex-col">
           <Link href="/" className="group block" onClick={() => setOpen(false)}>
-            <span className="block text-xs font-bold uppercase tracking-[0.2em] text-neutral-950">
+            <span className="block text-sm font-semibold tracking-tight text-neutral-950">
               {profile.name}
             </span>
             <span className="mt-1.5 block text-xs font-semibold leading-5 text-neutral-700">
@@ -87,7 +87,7 @@ export function Sidebar() {
           </Link>
 
           <div className="mt-12 flex min-h-0 flex-1 flex-col">
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-neutral-600">
+            <p className="type-label text-neutral-500">
               Index
             </p>
             <nav aria-label="Primary" className="mt-4 flex flex-col">
@@ -106,7 +106,7 @@ export function Sidebar() {
                         : "border-neutral-300 font-semibold text-neutral-800 hover:border-violet-400 hover:text-neutral-950"
                     )}
                   >
-                    <span className={twMerge("text-[10px] font-semibold tabular-nums text-neutral-600", active && "font-semibold text-sky-700")}>
+                    <span className={twMerge("type-index text-neutral-500", active && "font-semibold text-sky-700")}>
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>{link.label}</span>
@@ -161,7 +161,7 @@ export function Sidebar() {
               </a>
             ))}
           </div>
-          <p className="mt-5 max-w-36 text-[11px] font-semibold leading-5 text-neutral-700">
+          <p className="mt-5 max-w-36 text-xs font-medium leading-5 text-neutral-700">
             {profile.sidebarNote}
           </p>
           <div className="mt-5 flex items-center justify-between gap-3">
@@ -175,7 +175,7 @@ export function Sidebar() {
             <Link
               href="/privacy"
               onClick={() => setOpen(false)}
-              className="text-[10px] font-medium text-neutral-500 transition hover:text-neutral-700"
+              className="text-xs font-medium text-neutral-500 transition hover:text-neutral-700"
             >
               Privacy
             </Link>

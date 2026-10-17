@@ -54,7 +54,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="mt-10">
         <header className="max-w-5xl border-b border-neutral-200 pb-12">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">Engineering note</p>
+          <p className="type-eyebrow text-sky-700">Engineering note</p>
           <h1 className="mt-6 text-4xl font-semibold tracking-[-0.045em] text-neutral-950 md:text-6xl">{article.meta.title}</h1>
           <AccentBar />
           <p className="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">{article.meta.description}</p>
@@ -68,7 +68,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       {related.length > 0 && (
         <aside className="mt-10 border-t border-neutral-200 pt-8">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-500">Continue reading</p>
+          <p className="type-label text-neutral-600">Continue reading</p>
           <div className="mt-5 flex flex-col gap-3">
             {related.map((relatedArticle) => (
               <Link key={relatedArticle.slug} href={`/writing/${relatedArticle.slug}`} className="group inline-flex items-center gap-2 text-base font-semibold text-violet-700 hover:text-sky-700">

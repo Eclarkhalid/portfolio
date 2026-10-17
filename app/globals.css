@@ -34,6 +34,39 @@ body {
 
 /* Thin, neutral scrollbars for the page card and Lumen's conversation,
    which sit side by side when Lumen is open. */
+/* Type scale for small text. Sentence case only: hierarchy comes from size,
+   weight and the sky accent, never uppercase. Colour is set separately. */
+@utility type-eyebrow {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+@utility type-chapter {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility type-label {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+@utility type-meta {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+@utility type-index {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
 @utility scrollbar-subtle {
   scrollbar-width: thin;
   scrollbar-color: #d4d4d4 transparent;

@@ -18,10 +18,10 @@ function ChapterHeading({
 }) {
   return (
     <div className="flex items-center gap-4 border-b border-neutral-200 pb-4">
-      <span className="text-[11px] font-semibold tabular-nums text-sky-700">
+      <span className="type-index text-sky-700">
         {number}
       </span>
-      <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+      <h2 className="type-chapter text-neutral-900">
         {children}
       </h2>
     </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-28 bg-gradient-to-r from-transparent to-white xl:block"
         />
         <div className="relative z-10 max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500">
+          <p className="type-eyebrow text-sky-700">
             Portfolio / Selected work
           </p>
           <h1 className="mt-8 text-5xl font-semibold tracking-[-0.065em] text-neutral-950 sm:text-7xl md:text-[6.5rem] md:leading-[0.92]">
@@ -96,7 +96,7 @@ export default function HomePage() {
                 key={product.slug}
                 className="group grid gap-5 border-b border-neutral-200 py-8 md:grid-cols-[3rem_5rem_minmax(0,1fr)_auto] md:items-center md:gap-8"
               >
-                <span className="text-xs tabular-nums text-neutral-400">
+                <span className="type-index text-neutral-500">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <AppLogo slug={product.slug} name={product.meta.title} size={80} />
@@ -107,7 +107,7 @@ export default function HomePage() {
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
                     {product.meta.description}
                   </p>
-                  <p className="mt-3 text-[11px] leading-5 text-neutral-400">
+                  <p className="mt-3 type-meta text-neutral-500">
                     {product.meta.stack.join(" · ")}
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
         <ChapterHeading number="02">Engineering decisions</ChapterHeading>
         <div className="grid gap-10 py-10 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-700">
+            <p className="type-eyebrow text-violet-700">
               From the case studies
             </p>
             <p className="mt-5 text-2xl font-medium leading-snug tracking-[-0.025em] text-neutral-900 md:text-3xl">
@@ -143,7 +143,7 @@ export default function HomePage() {
                 href={`/work/${study.slug}`}
                 className="group grid gap-4 py-6 sm:grid-cols-[2rem_1fr_auto] sm:items-start"
               >
-                <span className="text-xs tabular-nums text-neutral-400">
+                <span className="type-index text-neutral-500">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>
@@ -173,7 +173,7 @@ export default function HomePage() {
               href={`/writing/${article.slug}`}
               className="group grid gap-4 py-6 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-center"
             >
-              <span className="text-xs tabular-nums text-neutral-400">
+              <span className="type-index text-neutral-500">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span>
@@ -209,7 +209,7 @@ export default function HomePage() {
       <section className="mt-28 border-t border-neutral-200 py-12 md:mt-36">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+            <p className="type-eyebrow text-neutral-600">
               Have a complex product to ship?
             </p>
             <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.035em] text-neutral-900 md:text-4xl">

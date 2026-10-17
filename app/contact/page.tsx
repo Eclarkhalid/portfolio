@@ -31,7 +31,7 @@ export default function ContactPage() {
             <a href={`mailto:${profile.email}`} className="font-semibold text-sky-700 hover:underline">{profile.email}</a>, or use the form.
           </p>
           <div className="mt-10 border-t border-neutral-200 pt-6">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-600">Elsewhere</p>
+            <p className="type-label text-neutral-600">Elsewhere</p>
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
               {socials.map((social) => (
                 <a key={social.href} href={social.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-700 transition hover:text-violet-700">

@@ -46,10 +46,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <header className="grid gap-8 border-b border-neutral-200 pb-12 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-10">
           <AppLogo slug={slug} name={product.meta.title} size={96} preload />
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-600">Product story</p>
+            <p className="type-eyebrow text-sky-700">Product story</p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <h1 className="text-4xl font-semibold tracking-[-0.045em] text-neutral-950 md:text-6xl">{product.meta.title}</h1>
-              <span className={sunsetted ? "rounded-full border border-neutral-300 bg-neutral-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-600" : "rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-800"}>
+              <span className={sunsetted ? "rounded-full border border-neutral-300 bg-neutral-50 px-3 py-1 text-xs font-medium text-neutral-600" : "rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-800"}>
                 {sunsetted ? "Sunsetted" : "Active"}
               </span>
             </div>
