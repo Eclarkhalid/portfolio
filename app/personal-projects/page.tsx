@@ -44,7 +44,7 @@ export default function PersonalProjectsPage() {
             id={project.slug}
             className="grid gap-8 border-b border-neutral-200 py-10 @4xl:grid-cols-[3rem_minmax(0,1fr)_16rem] @4xl:gap-10"
           >
-            <span className="text-xs tabular-nums text-neutral-500">
+            <span className="type-index text-neutral-500">
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>

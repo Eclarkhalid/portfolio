@@ -254,7 +254,7 @@ export default function LumenPanel({ onClose }: { onClose: () => void }) {
             </span>
             <div>
               <p className="text-sm font-semibold text-neutral-950">Lumen</p>
-              <p className="text-[11px] text-neutral-500">Eclar&apos;s AI guide · Powered by Claude</p>
+              <p className="text-xs text-neutral-500">Eclar&apos;s AI guide · Powered by Claude</p>
             </div>
           </div>
           <div className="flex gap-1">

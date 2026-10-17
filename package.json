@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node init && next dev",
+    "build": "node init && next build",
+    "start": "node init && next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "build:vps": "node scripts/build-vps.mjs",
+    "build:vps": "node init && node scripts/build-vps.mjs",
     "logos:refresh": "node scripts/refresh-logos.mjs"
   },
   "dependencies": {
